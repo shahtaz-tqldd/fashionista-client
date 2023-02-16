@@ -1,0 +1,16 @@
+@keyframes jumping{
+    0%{
+        bottom: 0;
+        /* transform: rotate(4deg); */
+    }
+    100%{
+        bottom: 10px;
+        /* transform: rotate(-4deg); */
+    }
+}
+
+.animation{
+    position: relative;
+    animation: jumping 0.5s ease-in-out infinite alternate-reverse;
+    animation-play-state: running;
+}

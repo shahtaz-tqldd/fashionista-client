@@ -1,0 +1,14 @@
+.cart{
+    position: fixed;
+    right: 0;
+    clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
+    scrollbar-width: thin;
+    scroll-behavior: smooth;
+    scrollbar-color: rgb(212, 90, 90);
+    overflow:auto;
+}
+.cart.open{
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    transition: 0.3s;
+    transition-property: clip-path;
+}
