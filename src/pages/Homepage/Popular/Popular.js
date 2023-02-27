@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import '../../../assets/styles/textstyles.css'
 import ProductCard from '../Cards/ProductCard'
 
-const HotDeals = () => {
+const Popular = () => {
     const [products, setProducts] = useState(null)
     useEffect(() => {
         fetch('products.json')
@@ -15,11 +15,12 @@ const HotDeals = () => {
             <div className='flex items-center justify-between mb-8'>
                 <div className='flex items-center'>
                     <lord-icon
-                        src="https://cdn.lordicon.com/tqywkdcz.json"
+                        src="https://cdn.lordicon.com/xhbsnkyp.json"
                         trigger="loop"
+                        colors="outline:#545454,primary:#c7166f,secondary:#fad1e6"
                         style={{ width: "60px", height: "60px" }}>
                     </lord-icon>
-                    <h2 className='font-bold text-2xl text-gradient'>Hot Deals</h2>
+                    <h2 className='font-bold text-2xl text-gradient'>Popular Items</h2>
                 </div>
                 <div>
                     <span className='mx-10'>Top 8</span>
@@ -28,7 +29,7 @@ const HotDeals = () => {
             </div>
             <div className='grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-5'>
                 {
-                    products?.slice(0, 8).map((item, index) => <ProductCard key={index} data={item} />)
+                    products?.slice(60, 68).map((item, index)=><ProductCard key={index} data={item} />)
                 }
             </div>
             <div className='flex items-center justify-end mt-8'>
@@ -43,8 +44,9 @@ const HotDeals = () => {
                     </lord-icon>
                 </Link>
             </div>
+
         </section>
     )
 }
 
-export default HotDeals
+export default Popular

@@ -2,9 +2,10 @@ import React from 'react'
 
 const PrimaryButton = ({ children }) => {
     return (
-        <button className='btn btn-primary text-white normal-case px-8 rounded-md'>
+        <button className='btn text-white normal-case px-8 rounded-md border-none' style={{backgroundColor:"#EC7272"}}>
             {children} &nbsp;
             <lord-icon
+                target="button"
                 src="https://cdn.lordicon.com/zmkotitn.json"
                 trigger="hover"
                 colors="primary:#ffffff"

@@ -1,0 +1,15 @@
+.gradientBg{
+    height: 100%;
+    width: 100%;
+    background-image: linear-gradient(to right, #000000d4 0%, #000000bc 20%,  #0000007c 40%, #ffffff00 100%);
+}
+
+
+.center{
+    padding: 20px 0;
+}
+
+.product:hover .productImg{
+    height: 110px;
+    transition: .3s;
+}

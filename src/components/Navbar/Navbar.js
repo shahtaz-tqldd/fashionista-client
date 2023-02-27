@@ -1,17 +1,17 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import MediumButton from '../Buttons/MediumButton'
-import logo from '../../assets/images/navlogo.png'
 
 const navItems = <React.Fragment>
-    <li><Link to='/'>Home</Link></li>
-    <li><Link to='/'>About</Link></li>
-    <li><Link to='/'>Contact</Link></li>
+    <li><Link to='/'>Men</Link></li>
+    <li><Link to='/'>Women</Link></li>
+    <li><Link to='/products'>Collections</Link></li>
+    <li><Link to='/'>Store Location</Link></li>
 </React.Fragment>
 
 const Navbar = () => {
     return (
-        <section className='fixed bg-white left-0 right-0 top-0 z-10'>
+        <section className='fixed bg-white left-0 right-0 top-0 z-10 shadow-sm'>
             <div className="navbar mx-auto max-w-[1200px]">
                 <div className="navbar-start">
                     <div className="dropdown">
@@ -23,8 +23,7 @@ const Navbar = () => {
                         </ul>
                     </div>
                     <div className='flex items-center gap-3'>
-                        <img className="h-14" src={logo} alt="" />
-                        {/* <Link to='/' className="text-xl"><b>Zara</b> Fashion</Link> */}
+                        <Link to='/' className='text-[#3E8E7E] text-xl font-bold'>Fashionista</Link>
                     </div>
                 </div>
                 <div className="navbar-center hidden lg:flex">
@@ -33,8 +32,8 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <Link to='/login'><MediumButton>Sign In</MediumButton></Link>
-                    <Link to='/login' className='ml-2'><MediumButton btnSpecially={'bg-error'}>Sign Up</MediumButton></Link>
+                    <Link to='/login'><MediumButton btnSpecially={'btn-outline'}>Sign In</MediumButton></Link>
+                    <Link to='/login' className='ml-2'><MediumButton btnSpecially={'bg-error text-white'}>Sign Up</MediumButton></Link>
                 </div>
             </div>
         </section>
