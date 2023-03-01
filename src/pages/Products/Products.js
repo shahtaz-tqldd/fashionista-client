@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react'
+import useTitle from '../../hooks/useTitle'
 import ProductCard from '../Homepage/Cards/ProductCard'
 
 const Products = () => {
+    useTitle('Products')
     const [products, setProducts] = useState(null)
     useEffect(() => {
-        fetch('products.json')
+        fetch('http://localhost:5000/products')
             .then(res => res.json())
             .then(data => setProducts(data))
     }, [products])

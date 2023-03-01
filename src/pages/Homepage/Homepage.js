@@ -1,5 +1,6 @@
 import React from 'react'
 import HeroCarousel from '../../components/Carousels/HeroCarousel'
+import useTitle from '../../hooks/useTitle'
 import CategoryCard from './Cards/CategoryCard'
 import CategorySlider from './Hero/CategorySlider'
 import HotDeals from './HotDeals/HotDeals'
@@ -9,6 +10,7 @@ import Subscribe from './Subscribe/Subscribe'
 import Testimonial from './Testimonial/Testimonial'
 
 const Homepage = () => {
+    useTitle('Home')
     const category = [
         {
             "name": "Free Delivery",
@@ -42,7 +44,7 @@ const Homepage = () => {
                 {/* products card */}
                 <div className='lg:w-1/3 h-[480px]'>
                     <div className='mb-3'>
-                        <span className='bg-gradient text-white px-4 py-[5px] rounded-full font-bold'>New Arival</span>
+                        <span className='bg-gradient text-white text-xs px-6 py-[5px] rounded-full'>New Arival</span>
                     </div>
                     <CategorySlider />
                 </div>

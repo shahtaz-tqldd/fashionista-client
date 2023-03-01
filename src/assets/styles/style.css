@@ -4,12 +4,17 @@
     background-image: linear-gradient(to right, #000000d4 0%, #000000bc 20%,  #0000007c 40%, #ffffff00 100%);
 }
 
-
+/* DISCOUNT: DOTS GAPPING */
 .center{
     padding: 20px 0;
 }
 
+/* NEW ARRIVAL PRODUCTS CARD HOVER EFFECT */
+
 .product:hover .productImg{
-    height: 110px;
+    transform: scale(1.2);
     transition: .3s;
+}
+.product:hover{
+    background-color: #75afff50 !important;
 }

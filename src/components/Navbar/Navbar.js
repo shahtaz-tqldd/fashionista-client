@@ -1,12 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import MediumButton from '../Buttons/MediumButton'
+// import logo from '../../assets/icons/logo.png'
 
 const navItems = <React.Fragment>
-    <li><Link to='/'>Men</Link></li>
-    <li><Link to='/'>Women</Link></li>
+    <li><Link to='/'>New Arrival</Link></li>
+    <li><Link to='/'>Popular</Link></li>
     <li><Link to='/products'>Collections</Link></li>
-    <li><Link to='/'>Store Location</Link></li>
+    <li><Link to='/stores'>Store Location</Link></li>
 </React.Fragment>
 
 const Navbar = () => {
@@ -23,7 +24,12 @@ const Navbar = () => {
                         </ul>
                     </div>
                     <div className='flex items-center gap-3'>
-                        <Link to='/' className='text-[#3E8E7E] text-xl font-bold'>Fashionista</Link>
+                        {/* <Link to='/'>
+                            <img src={logo} alt="" className='h-8' />
+                        </Link> */}
+                        <Link to='/' className='text-[#3E8E7E] text-xl font-bold' style={{fontFamily:"'Ubuntu', sans-serif"}}>
+                            fashionista
+                        </Link>
                     </div>
                 </div>
                 <div className="navbar-center hidden lg:flex">
@@ -33,7 +39,7 @@ const Navbar = () => {
                 </div>
                 <div className="navbar-end">
                     <Link to='/login'><MediumButton btnSpecially={'btn-outline'}>Sign In</MediumButton></Link>
-                    <Link to='/login' className='ml-2'><MediumButton btnSpecially={'bg-error text-white'}>Sign Up</MediumButton></Link>
+                    <Link to='/register' className='ml-2'><MediumButton btnSpecially={'bg-error text-white'}>Sign Up</MediumButton></Link>
                 </div>
             </div>
         </section>

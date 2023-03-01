@@ -10,33 +10,33 @@ const Testimonial = () => {
         slidesToShow: 3,
         slidesToScroll: 1,
         autoplay: true,
-        speed: 700,
+        speed: 500,
         autoplaySpeed: 3500,
         cssEase: "linear",
         responsive: [
             {
-              breakpoint: 1024,
-              settings: {
-                slidesToShow: 3,
-                slidesToScroll: 3,
-              }
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 3,
+                }
             },
             {
-              breakpoint: 600,
-              settings: {
-                slidesToShow: 2,
-                slidesToScroll: 2,
-                initialSlide: 2
-              }
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2,
+                    initialSlide: 2
+                }
             },
             {
-              breakpoint: 480,
-              settings: {
-                slidesToShow: 1,
-                slidesToScroll: 1
-              }
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
             }
-          ]
+        ]
     }
     const testimonialData = [
         {
@@ -66,13 +66,15 @@ const Testimonial = () => {
     ]
     return (
         <section className='my-16'>
-            <div className='flex flex-col items-center mb-8'>
+            <div className='flex flex-col items-center justify-center mb-8'>
                 <lord-icon
+                    target="div"
                     src="https://cdn.lordicon.com/itmsnfur.json"
-                    trigger="loop"
+                    trigger="hover"
+                    colors="primary:#b26836,secondary:#16c79e,tertiary:#f9c9c0"
                     style={{ width: "120px", height: "120px" }}>
                 </lord-icon>
-                <h2 className='font-bold text-2xl text-gradient'>From Our Happy Customer</h2>
+                <h2 className='font-bold text-[45px] text-gradient -mt-5'>From Our Customer</h2>
             </div>
             <div>
                 <Slider {...settings}>

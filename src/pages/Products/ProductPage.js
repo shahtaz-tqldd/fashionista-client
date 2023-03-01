@@ -1,27 +1,32 @@
 import React, { useEffect, useState } from 'react'
-import { useLoaderData, useLocation } from 'react-router-dom'
+import { useLoaderData } from 'react-router-dom'
 import AddToCartButton from '../../components/Buttons/AddToCartButton'
 import { IoMdAdd, IoMdRemove } from 'react-icons/io'
 import ProductReview from './ProductReview'
 import ProductCard from '../Homepage/Cards/ProductCard'
+import useTitle from '../../hooks/useTitle'
+import Subscribe from '../Homepage/Subscribe/Subscribe'
 
 const ProductPage = () => {
-    const products = useLoaderData()
-    const id = useLocation()?.pathname?.split('/')[2]
-    const [product, setProduct] = useState(null)
+    const product = useLoaderData()
+    console.log(product)
+    useTitle(product?.name)
+
+    const [products, setProducts] = useState(null)
+    useEffect(() => {
+        fetch('http://localhost:5000/products')
+            .then(res => res.json())
+            .then(data => setProducts(data))
+    }, [products])
+
     const [clicked, setClicked] = useState(false)
     const [selectedTab, setSelectedTab] = useState(1)
     const [num, setNum] = useState(1)
+    
     const [size, setSize] = useState(1)
     const sizes = [
         "M", "L", "XL", "2XL"
     ]
-    useEffect(() => {
-        const matchingProduct = products?.find(p => p.id === id)
-        if (matchingProduct) {
-            setProduct(matchingProduct)
-        }
-    }, [products, id])
 
     const handleAddToCart = () => {
         const productDetails = {
@@ -32,7 +37,7 @@ const ProductPage = () => {
         console.log(productDetails)
     }
 
-    if (products.length === 0) {
+    if (product.length === 0) {
         return <div>Loading...</div>
     }
     return (
@@ -50,19 +55,32 @@ const ProductPage = () => {
                     <h1 className='text-3xl font-bold'>{product?.name}</h1>
                     <h2 className='text-4xl mt-8'>BDT {product?.price * 10}</h2>
 
-                    {/* Select Size */}
-                    <h2 className='mt-10 mb-2 text-md text-gradient font-bold'>Pick a Size</h2>
-                    <div className="flex gap-3">
-                        {
-                            sizes.map((item, index) => {
-                                return <span onClick={() => setSize(index + 1)}
-                                    className={`hover:shadow-xl h-10 w-10 rounded-full flex items-center justify-center cursor-pointer ${size === index + 1 ? "bg-secondary text-white" : "bg-[#E1EEDD]"}`}>
-                                    {item}
-                                </span>
-                            })
-                        }
-                    </div>
+                    <div className='flex gap-12'>
+                        {/* PICK A SIZE */}
+                        <div>
+                            <h2 className='mt-10 mb-2 text-md text-gradient font-bold'>Pick a Size</h2>
+                            <div className="flex gap-3">
+                                {
+                                    sizes.map((item, index) => {
+                                        return <span onClick={() => setSize(index + 1)}
+                                            className={`hover:shadow-xl h-10 w-10 rounded-full flex items-center justify-center cursor-pointer ${size === index + 1 ? "bg-secondary text-white" : "bg-[#E1EEDD]"}`}>
+                                            {item}
+                                        </span>
+                                    })
+                                }
+                            </div>
+                        </div>
 
+                        {/* CHOOSE COLOURS */}
+                        <div>
+                            <h2 className='mt-10 mb-2 text-md text-gradient font-bold'>Choose Color</h2>
+                            <div className="flex gap-3">
+                                <span className='h-6 w-6 bg-primary rounded-full'></span>
+                                <span className='h-6 w-6 bg-[#222] rounded-full'></span>
+                            </div>
+                        </div>
+
+                    </div>
                     {/* Add More Button */}
                     <div className='mt-8 flex items-center gap-3'>
                         <button className='btn btn-sm rounded-sm btn-error text-white' disabled={num === 1} onClick={() => setNum(num - 1)}><IoMdRemove /></button>
@@ -140,15 +158,18 @@ const ProductPage = () => {
                 </div>
             </section>
 
-            {/* related products */}
-            <section className='mt-16'>
+            {/* SIMILAR PRODUCTS */}
+            <section className='my-32'>
                 <h2 className='text-2xl font-bold text-gradient mb-8'>Similar Products</h2>
                 <div className='grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-5'>
                     {
-                        products?.slice(0, 4).map((item, index) => <ProductCard key={index} data={item} />)
+                        products?.slice(0, 4)?.map((item, index) => <ProductCard key={index} data={item} />)
                     }
                 </div>
             </section>
+            
+            {/* GET COUPON */}
+            <Subscribe/>
         </div>
     )
 }

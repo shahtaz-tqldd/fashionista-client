@@ -49,3 +49,12 @@
 .option>span{
     cursor: pointer;
 }
+
+/* LORDICON COLOR CHANGE ON HOVER */
+.current-color{
+    color: #394e6a;
+}
+.go-cart:hover .current-color{
+    color: #fff;
+    transition: 0.3s;
+}

@@ -1,80 +1,102 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import '../../assets/styles/cart.css'
+import { getStoredCart } from '../../assets/utilities/dbLocal'
 import CartProductCard from './CartProductCard'
+import cartImg from '../../assets/images/cart.png'
+import PrimaryButton from '../Buttons/PrimaryButton'
+import { Link } from 'react-router-dom'
 
 const Cart = ({ setCartOpen, cartOpen }) => {
-    const cartData = [
-        {
+    const [cart, setCart] = useState([])
 
-            name: "Tshirt",
-            image: "https://freepngimg.com/thumb/tshirt/7-2-t-shirt-png-hd.png",
-            price: 200,
-            qty: 1
-        },
-        {
+    // LOAD ALL THE PRODUCTS
+    const [products, setProducts] = useState(null)
+    useEffect(() => {
+        fetch('http://localhost:5000/products')
+            .then(res => res.json())
+            .then(data => setProducts(data))
+    }, [products])
 
-            name: "Tshirt",
-            image: "https://www.pngarts.com/files/5/Plain-Pink-T-Shirt-Transparent-Image.png",
-            price: 249,
-            qty: 1
-        },
-        {
+    // GET CART PRODUCTS FROM LOCALSTORAGE
+    useEffect(() => {
+        let savedCart = [];
+        const storedCart = getStoredCart();
+        for (const id in storedCart) {
+            const addedProduct = products?.find(product => product.id === id)
+            if (addedProduct) {
+                const quantity = storedCart[id]
+                addedProduct.quantity = quantity
+                savedCart.push(addedProduct)
+            }
+        }
+        setCart(savedCart)
+    }, [products])
 
-            name: "Tshirt",
-            image: "https://i0.wp.com/miamiepictees.net/wp-content/uploads/2016/04/preview_men_standard_front-1.png?fit=240%2C264&ssl=1",
-            price: 400,
-            qty: 2
-        },
-        {
-
-            name: "Tshirt",
-            image: "https://i0.wp.com/miamiepictees.net/wp-content/uploads/2016/04/preview_men_standard_front-1.png?fit=240%2C264&ssl=1",
-            price: 400,
-            qty: 2
-        },
-
-    ]
-
+    // CART CALCULATION
     let subtotal = 0;
-    cartData.map(item => {
-        return subtotal = subtotal + (item.price * item.qty)
+    cart.map(item => {
+        return subtotal = subtotal + (item.price * 10 * item.quantity)
     })
-    const total = subtotal
+    const total = subtotal;
+
+    // SET PRODUCT NUMBER IN THE LOCALSTORAGE
+    useEffect(() => {
+        const numProduct = cart?.length;
+        localStorage.setItem('cart-items', numProduct)
+    }, [cart])
     return (
-        <section className={`cart top-0 z-50 h-[100vh] bg-[#CEEDC7] lg:w-1/4 w-3/4 p-6 ${cartOpen && 'open'}`} >
+        <section className={`cart top-0 z-50 h-[100vh] bg-[#CEEDC7] lg:w-[30%] w-3/4 py-6 px-8 ${cartOpen && 'open'}`} >
             <label htmlFor="my-modal-3" className="btn btn-sm btn-circle btn-error text-white fixed right-5 top-2" onClick={() => setCartOpen(false)}>✕</label>
             <div className='text-center mt-4 mb-8'>
                 <h2 className='font-bold text-xl'>Your Shopping Cart</h2>
-                <h3 className='text-md'>Selected Items: <strong>{cartData.length}</strong></h3>
+                <h3 className='text-md'>Selected Items: <strong>{cart.length}</strong></h3>
             </div>
+
             {
-                cartData.map((item, index) => <CartProductCard data={item} key={index} />)
+                cart?.length ?
+                    cart?.map((item, index) => <CartProductCard data={item} key={index} />)
+                    :
+                    <div className='flex items-center justify-center'>
+                        <img src={cartImg} className="h-[300px]" alt="" />
+                    </div>
+            }
+            {
+                total > 0 ?
+                    <h2 className='mt-4'>Subtotal &emsp; <span className='text-3xl font-bold'>BDT {total}</span> </h2>
+                    : <h2 className='mt-2 text-2xl font-bold text-center'>Your Shopping Cart is Empty </h2>
+            }
+            {
+                cart?.length ?
+                    <button className='btn btn-outline w-full mt-8 normal-case go-cart'>
+                        <lord-icon
+                            target="button"
+                            src="https://cdn.lordicon.com/medpcfcy.json"
+                            trigger="hover"
+                            class="current-color"
+                            style={{ width: "25px", height: "25px" }}>
+                        </lord-icon>
+                        &nbsp; Go to Cart
+                    </button>
+                    : <span></span>
             }
 
-            <h2 className='mt-4'>Subtotal &emsp; <span className='text-3xl font-bold'>BDT {total}</span> </h2>
-
-            <button className='btn btn-outline w-full mt-8 normal-case'>
-                <lord-icon
-                    target="button"
-                    src="https://cdn.lordicon.com/medpcfcy.json"
-                    trigger="hover"
-                    colors="primary:#fff"
-                    style={{ width: "25px", height: "25px" }}>
-                </lord-icon>
-                &nbsp; Go to Cart 
-            </button>
-
             {
-                cartData.length && <button className='btn btn-white w-full mt-3 text-white normal-case'>
-                    Checkout &emsp;
-                    <lord-icon
-                        target="button"
-                        src="https://cdn.lordicon.com/zmkotitn.json"
-                        trigger="hover"
-                        colors="primary:#ffffff"
-                        style={{ width: "20px", height: "20px" }}>
-                    </lord-icon>
-                </button>
+                cart?.length ?
+                    <button className='btn btn-white w-full mt-3 text-white normal-case'>
+                        Checkout &emsp;
+                        <lord-icon
+                            target="button"
+                            src="https://cdn.lordicon.com/zmkotitn.json"
+                            trigger="hover"
+                            colors="primary:#ffffff"
+                            style={{ width: "20px", height: "20px" }}>
+                        </lord-icon>
+                    </button>
+                    :
+                    <Link to='/products' className='mt-12 flex justify-center'>
+                        <PrimaryButton>Shop Now </PrimaryButton>
+                    </Link>
+
             }
 
         </section>

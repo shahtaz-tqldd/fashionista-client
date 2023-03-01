@@ -4,12 +4,12 @@ import '../../../assets/styles/textstyles.css'
 import ProductCard from '../Cards/ProductCard'
 
 const Popular = () => {
-    const [products, setProducts] = useState(null)
+    const [popularProducts, setPopularProducts] = useState(null)
     useEffect(() => {
-        fetch('products.json')
+        fetch('http://localhost:5000/products/popular')
             .then(res => res.json())
-            .then(data => setProducts(data))
-    }, [products])
+            .then(data => setPopularProducts(data))
+    }, [popularProducts])
     return (
         <section>
             <div className='flex items-center justify-between mb-8'>
@@ -29,7 +29,7 @@ const Popular = () => {
             </div>
             <div className='grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-5'>
                 {
-                    products?.slice(60, 68).map((item, index)=><ProductCard key={index} data={item} />)
+                    popularProducts?.map((item, index)=><ProductCard key={index} data={item} />)
                 }
             </div>
             <div className='flex items-center justify-end mt-8'>

@@ -4,12 +4,12 @@ import '../../../assets/styles/textstyles.css'
 import ProductCard from '../Cards/ProductCard'
 
 const HotDeals = () => {
-    const [products, setProducts] = useState(null)
+    const [hotDeals, setHotDeals] = useState(null)
     useEffect(() => {
-        fetch('products.json')
+        fetch('http://localhost:5000/products/hotdeals')
             .then(res => res.json())
-            .then(data => setProducts(data))
-    }, [products])
+            .then(data => setHotDeals(data))
+    }, [hotDeals])
     return (
         <section>
             <div className='flex items-center justify-between mb-8'>
@@ -28,7 +28,7 @@ const HotDeals = () => {
             </div>
             <div className='grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-5'>
                 {
-                    products?.slice(0, 8).map((item, index) => <ProductCard key={index} data={item} />)
+                    hotDeals?.map((item, index) => <ProductCard key={index} data={item} />)
                 }
             </div>
             <div className='flex items-center justify-end mt-8'>

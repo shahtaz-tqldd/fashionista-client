@@ -24,7 +24,9 @@ const ProductReview = () => {
     ]
     return (
         <div className='flex flex-col gap-3'>
-            {reviewData.map((review, index) => <ReviewCard key={index} data={review} />)}
+            {
+                reviewData.map((review, index) => <ReviewCard key={index} data={review} />)
+            }
         </div>
     )
 }

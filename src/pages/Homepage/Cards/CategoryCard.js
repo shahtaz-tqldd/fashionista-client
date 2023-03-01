@@ -6,7 +6,8 @@ const CategoryCard = ({ data }) => {
         <div className='m-4 flex flex-col items-center hover:bg-white hover:shadow-lg p-5 rounded-xl text-center cursor-pointer'>
             <lord-icon
                 src={image}
-                trigger="loop"
+                trigger="hover"
+                target="div"
                 colors="outline:#121331,primary:#646e78,secondary:#86C8BC"
                 style={{ width: "100px", height: "100px" }}>
             </lord-icon>
