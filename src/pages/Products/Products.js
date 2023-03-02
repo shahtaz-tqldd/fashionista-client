@@ -1,15 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext} from 'react'
+import { AuthContext } from '../../context/AuthProvider'
 import useTitle from '../../hooks/useTitle'
 import ProductCard from '../Homepage/Cards/ProductCard'
 
 const Products = () => {
     useTitle('Products')
-    const [products, setProducts] = useState(null)
-    useEffect(() => {
-        fetch('http://localhost:5000/products')
-            .then(res => res.json())
-            .then(data => setProducts(data))
-    }, [products])
+    const {products} = useContext(AuthContext)
 
     let allCategory = []
     products?.map(p => !allCategory.includes(p.category) && allCategory.push(p.category))

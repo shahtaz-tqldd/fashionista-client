@@ -38,7 +38,6 @@ const StoreLocation = () => {
     ]
     return (
         <section className='flex lg:gap-16 gap-8 lg:flex-row flex-col'>
-
             <div className='lg:w-1/3'>
                 {/* SIDE MENU */}
                 <div className="sticky top-28 flex lg:flex-col flex-row lg:gap-10 gap-3 text-[#bbb]">
@@ -49,7 +48,7 @@ const StoreLocation = () => {
                                     target="span"
                                     src="https://cdn.lordicon.com/fihkmkwt.json"
                                     trigger="hover"
-                                    colors="primary:#121331,secondary:#16c79e"
+                                    colors={selectedTab === (index+1) ? "primary:#121331,secondary:#16c79e" : "primary:#121331,secondary:#bbb"}
                                     style={{ width: "30px", height: "30px" }}>
                                 </lord-icon>
                                 <div>

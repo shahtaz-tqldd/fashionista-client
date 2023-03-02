@@ -6,6 +6,7 @@ import ProductReview from './ProductReview'
 import ProductCard from '../Homepage/Cards/ProductCard'
 import useTitle from '../../hooks/useTitle'
 import Subscribe from '../Homepage/Subscribe/Subscribe'
+import { addToDb } from '../../assets/utilities/dbLocal'
 
 const ProductPage = () => {
     const product = useLoaderData()
@@ -35,6 +36,7 @@ const ProductPage = () => {
             size: sizes[size - 1]
         }
         console.log(productDetails)
+        addToDb(product?.id)
     }
 
     if (product.length === 0) {

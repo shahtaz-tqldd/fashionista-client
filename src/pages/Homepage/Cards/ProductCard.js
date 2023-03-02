@@ -2,16 +2,10 @@ import React from 'react'
 import '../../../assets/styles/cart.css'
 import { BsStar, BsStarFill, BsStarHalf } from 'react-icons/bs'
 import { useNavigate } from 'react-router-dom'
-import { addToDb } from '../../../assets/utilities/dbLocal'
 
 const ProductCard = ({ data }) => {
     const { name, img, price, seller, ratingsCount, id } = data
     const navigate = useNavigate()
-
-    const handleAddToCart = (e) => {
-        e.preventDefault()
-        addToDb(id)
-    }
 
     const handleGoLink = () => {
         navigate(`/products/${id}`)
@@ -19,7 +13,7 @@ const ProductCard = ({ data }) => {
     return (
         <div
             onClick={handleGoLink}
-            className='rounded-lg cart-card hover:bg-white hover:shadow-lg cursor-pointer'
+            className='rounded-lg cart-card hover:bg-white hover:shadow-lg transition duration-150 cursor-pointer'
             data-aos="fade-up"
         >
 
@@ -48,7 +42,7 @@ const ProductCard = ({ data }) => {
                 </div>
             </div>
 
-            <div
+            {/* <div
                 className='flex gap-3 cart-btn'
             >
                 <button
@@ -76,7 +70,7 @@ const ProductCard = ({ data }) => {
                         style={{ width: "30px", height: "30px" }}>
                     </lord-icon>
                 </button>
-            </div>
+            </div> */}
         </div>
     )
 }
