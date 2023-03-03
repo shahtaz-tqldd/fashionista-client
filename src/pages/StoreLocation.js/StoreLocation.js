@@ -42,13 +42,17 @@ const StoreLocation = () => {
                 {/* SIDE MENU */}
                 <div className="sticky top-28 flex lg:flex-col flex-row lg:gap-10 gap-3 text-[#bbb]">
                     {
-                        storesData?.map((item, index) => <div onClick={() => { setSelectedTab(index + 1); window.scrollTo({ top: 0, behavior:"smooth" }) }} className={`cursor-pointer ${selectedTab === index + 1 && "text-[#16c79e] "}`}>
+                        storesData?.map((item, index) => <div
+                            key={index}
+                            onClick={() => { setSelectedTab(index + 1); window.scrollTo({ top: 0, behavior: "smooth" }) }}
+                            className={`cursor-pointer ${selectedTab === index + 1 && "text-[#16c79e] "}`}
+                            >
                             <span className='flex items-start gap-1'>
                                 <lord-icon
                                     target="span"
                                     src="https://cdn.lordicon.com/fihkmkwt.json"
                                     trigger="hover"
-                                    colors={selectedTab === (index+1) ? "primary:#121331,secondary:#16c79e" : "primary:#121331,secondary:#bbb"}
+                                    colors={selectedTab === (index + 1) ? "primary:#121331,secondary:#16c79e" : "primary:#121331,secondary:#bbb"}
                                     style={{ width: "30px", height: "30px" }}>
                                 </lord-icon>
                                 <div>

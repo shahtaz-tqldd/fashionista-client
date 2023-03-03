@@ -2,12 +2,14 @@ import { createBrowserRouter } from "react-router-dom";
 import Main from "../layouts/Main";
 import MyCartPage from "../pages/CartPage/MyCartPage";
 import Checkout from "../pages/Checkout/Checkout";
+import ContactPage from "../pages/ContactPage/ContactPage";
 import Homepage from "../pages/Homepage/Homepage";
 import Login from "../pages/LoginReegister/Login";
 import Register from "../pages/LoginReegister/Register";
 import ProductPage from "../pages/Products/ProductPage";
 import Products from "../pages/Products/Products";
 import StoreLocation from "../pages/StoreLocation.js/StoreLocation";
+import SuccessPage from "../pages/SuccessPage/SuccessPage";
 
 export const routes = createBrowserRouter([{
     path: '/',
@@ -30,6 +32,14 @@ export const routes = createBrowserRouter([{
             element: <Checkout />
         },
         {
+            path: '/contact',
+            element: <ContactPage />
+        },
+        {
+            path: '/success',
+            element: <SuccessPage />
+        },
+        {
             path: '/cart',
             element: <MyCartPage />
         },
@@ -43,7 +53,7 @@ export const routes = createBrowserRouter([{
         },
         {
             path: '/products/:id',
-            loader: ({params}) => fetch(`http://localhost:5000/products/${params.id}`),
+            loader: async({params}) => await fetch(`https://fashionista-server.vercel.app/products/${params.id}`),
             element: <ProductPage />,
         },
     ]

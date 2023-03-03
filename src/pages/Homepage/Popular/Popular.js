@@ -6,7 +6,7 @@ import ProductCard from '../Cards/ProductCard'
 const Popular = () => {
     const [popularProducts, setPopularProducts] = useState(null)
     useEffect(() => {
-        fetch('http://localhost:5000/products/popular')
+        fetch('https://fashionista-server.vercel.app/products/popular')
             .then(res => res.json())
             .then(data => setPopularProducts(data))
     }, [popularProducts])

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { useLoaderData } from 'react-router-dom'
 import AddToCartButton from '../../components/Buttons/AddToCartButton'
 import { IoMdAdd, IoMdRemove } from 'react-icons/io'
@@ -7,23 +7,18 @@ import ProductCard from '../Homepage/Cards/ProductCard'
 import useTitle from '../../hooks/useTitle'
 import Subscribe from '../Homepage/Subscribe/Subscribe'
 import { addToDb } from '../../assets/utilities/dbLocal'
+import { AuthContext } from '../../context/AuthProvider'
 
 const ProductPage = () => {
     const product = useLoaderData()
-    console.log(product)
     useTitle(product?.name)
 
-    const [products, setProducts] = useState(null)
-    useEffect(() => {
-        fetch('http://localhost:5000/products')
-            .then(res => res.json())
-            .then(data => setProducts(data))
-    }, [products])
+    const { products } = useContext(AuthContext)
 
     const [clicked, setClicked] = useState(false)
     const [selectedTab, setSelectedTab] = useState(1)
     const [num, setNum] = useState(1)
-    
+
     const [size, setSize] = useState(1)
     const sizes = [
         "M", "L", "XL", "2XL"
@@ -64,7 +59,7 @@ const ProductPage = () => {
                             <div className="flex gap-3">
                                 {
                                     sizes.map((item, index) => {
-                                        return <span onClick={() => setSize(index + 1)}
+                                        return <span key={index} onClick={() => setSize(index + 1)}
                                             className={`hover:shadow-xl h-10 w-10 rounded-full flex items-center justify-center cursor-pointer ${size === index + 1 ? "bg-secondary text-white" : "bg-[#E1EEDD]"}`}>
                                             {item}
                                         </span>
@@ -169,9 +164,9 @@ const ProductPage = () => {
                     }
                 </div>
             </section>
-            
+
             {/* GET COUPON */}
-            <Subscribe/>
+            <Subscribe />
         </div>
     )
 }

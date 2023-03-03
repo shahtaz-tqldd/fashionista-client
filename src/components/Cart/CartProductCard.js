@@ -13,8 +13,8 @@ const CartProductCard = ({ data }) => {
             <div className='flex gap-5'>
                 <img src={img} alt="" className='h-16' />
                 <div>
-                    <h2 className='font-bold text-lg'>{name}</h2>
-                    <p className='mb-[5px]'>BDT {price * 10}</p>
+                    <h2 className='font-bold text-md capitalize leading-5'>{name.toLowerCase()}</h2>
+                    <p className='my-[5px]'>BDT {price * 10}</p>
                     <div className='flex items-center gap-2'>
                         <button disabled={number <= 1} onClick={() => setNumber(number - 1)}>
                             <FiMinusCircle className={number <= 1 ? 'text-[#aaa]':'text-[#EC7272]'}/>

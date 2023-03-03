@@ -6,7 +6,7 @@ import ProductCard from '../Cards/ProductCard'
 const HotDeals = () => {
     const [hotDeals, setHotDeals] = useState(null)
     useEffect(() => {
-        fetch('http://localhost:5000/products/hotdeals')
+        fetch('https://fashionista-server.vercel.app/products/hotdeals')
             .then(res => res.json())
             .then(data => setHotDeals(data))
     }, [hotDeals])

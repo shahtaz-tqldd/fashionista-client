@@ -8,7 +8,7 @@ const AuthProvider = ({ children }) => {
     // LOAD ALL THE PRODUCTS
     const [products, setProducts] = useState(null)
     useEffect(() => {
-        fetch('http://localhost:5000/products')
+        fetch('https://fashionista-server.vercel.app/products')
             .then(res => res.json())
             .then(data => setProducts(data))
     }, [products])

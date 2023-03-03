@@ -1,11 +1,15 @@
 import React, { useContext } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../context/AuthProvider'
 import useTitle from '../../hooks/useTitle'
 
 const Checkout = () => {
   useTitle("Checkout")
   const {cart, total} = useContext(AuthContext)
+  const navigate = useNavigate()
+  const handlePlaceOrder =()=>{
+    navigate('/success')
+  }
   return (
     <React.Fragment>
       <div className="alert alert-info shadow-lg mb-8">
@@ -65,7 +69,7 @@ const Checkout = () => {
             </div>
 
 
-            <button disabled={cart.length === 0} className='mt-8 btn btn-primary w-full normal-case text-white'>Place Order</button>
+            <button onClick={handlePlaceOrder} disabled={cart.length === 0} className='mt-8 btn btn-primary w-full normal-case text-white'>Place Order</button>
 
 
           </div>
