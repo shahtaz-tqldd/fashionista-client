@@ -52,7 +52,7 @@ const StoreLocation = () => {
                                     target="span"
                                     src="https://cdn.lordicon.com/fihkmkwt.json"
                                     trigger="hover"
-                                    colors={selectedTab === (index + 1) ? "primary:#121331,secondary:#16c79e" : "primary:#121331,secondary:#bbb"}
+                                    colors={selectedTab === (index + 1) ? "primary:#16c79e,secondary:#16c79e" : "primary:#bbb,secondary:#bbb"}
                                     style={{ width: "30px", height: "30px" }}>
                                 </lord-icon>
                                 <div>

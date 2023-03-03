@@ -10,7 +10,7 @@ const Promotions = () => {
           trigger="loop"
           style={{ width: "60px", height: "60px" }}>
         </lord-icon>
-        <h2 className='font-bold text-2xl text-gradient'>Promotions</h2>
+        <h2 className='font-bold text-2xl textGradient'>Promotions</h2>
       </div>
       <PromotionSlider />
     </section>

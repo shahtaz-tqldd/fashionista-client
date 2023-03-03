@@ -5,7 +5,7 @@ const ContactPage = () => {
   useTitle('Contact Us')
   return (
     <React.Fragment>
-      <h1 className='text-gradient font-bold text-5xl text-center mb-8'>Contact Us</h1>
+      <h1 className='textGradient font-bold text-5xl text-center mb-8'>Contact Us</h1>
       <section className='flex lg:flex-row gap-14 flex-col'>
         <div className='lg:w-[35%]'>
 

@@ -1,0 +1,7 @@
+.search-products::-webkit-scrollbar {
+    display: none;
+}
+
+.search-products {
+    scrollbar-width: none;
+}

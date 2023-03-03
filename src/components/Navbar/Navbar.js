@@ -1,15 +1,20 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import MediumButton from '../Buttons/MediumButton'
-// import logo from '../../assets/icons/logo.png'
-
-const navItems = <React.Fragment>
-    <li><Link to='/products'>Collections</Link></li>
-    <li><Link to='/stores'>Store Location</Link></li>
-    <li><Link to='/contact'>Contact</Link></li>
-</React.Fragment>
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import MediumButton from '../Buttons/MediumButton';
+import SearchModal from '../Modals/SearchModal';
+import logo from '../../assets/icons/logo.png'
 
 const Navbar = () => {
+    const [modalOpen, setModalOpen] = useState(false);
+
+    const navItems = (
+        <>
+            <li><Link to='/products'>Collections</Link></li>
+            <li><Link to='/stores'>Store Location</Link></li>
+            <li><Link to='/contact'>Contact</Link></li>
+        </>
+    );
+
     return (
         <section className="fixed left-0 right-0 top-0 z-10 bg-white">
             <div className="navbar mx-auto max-w-[1200px]">
@@ -22,14 +27,12 @@ const Navbar = () => {
                             {navItems}
                         </ul>
                     </div>
-                    <div className='flex items-center gap-3'>
-                        {/* <Link to='/'>
-                            <img src={logo} alt="" className='h-8' />
-                        </Link> */}
-                        <Link to='/' className='text-[#3E8E7E] text-xl font-bold' style={{ fontFamily: "'Ubuntu', sans-serif" }}>
-                            fashionista
-                        </Link>
-                    </div>
+
+                    <Link to='/' className='textGradient text-[24px] font-bold flex items-center gap-2' style={{ fontFamily: "'Ubuntu', sans-serif" }}>
+                        <img src={logo} alt="" className='h-10' />
+                        fashionista
+                    </Link>
+
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
@@ -37,9 +40,19 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <span>Search</span>
-                    <Link to='/login'><MediumButton btnSpecially={'btn-outline'}>Sign In</MediumButton></Link>
-                    <Link to='/register' className='ml-2'><MediumButton btnSpecially={'bg-error text-white'}>Sign Up</MediumButton></Link>
+                    <button onClick={() => setModalOpen(true)} className="cursor-pointer hover:text-primary flex items-center gap-1 mr-6">
+                        <lord-icon
+                            target="button"
+                            src="https://cdn.lordicon.com/xfftupfv.json"
+                            trigger="hover"
+                            style={{ height: "20px", width: "20px" }}>
+                        </lord-icon>
+                        Search
+                    </button>
+
+                    {modalOpen && <SearchModal setModalOpen={setModalOpen} />}
+
+                    <Link to='/login' className='ml-2'><MediumButton btnSpecially={'bg-[#EC7272] text-white'}>Sign In</MediumButton></Link>
                 </div>
             </div>
         </section>

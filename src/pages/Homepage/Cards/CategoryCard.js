@@ -8,7 +8,7 @@ const CategoryCard = ({ data }) => {
                 src={image}
                 trigger="hover"
                 target="div"
-                colors="outline:#121331,primary:#646e78,secondary:#86C8BC"
+                colors="outline:#121331,primary:#646e78,secondary:#6ECCAF"
                 style={{ width: "100px", height: "100px" }}>
             </lord-icon>
             <h2 className='text-xl font-bold'>{name}</h2>

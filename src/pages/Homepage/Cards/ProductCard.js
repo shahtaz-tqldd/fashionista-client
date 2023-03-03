@@ -3,17 +3,18 @@ import '../../../assets/styles/cart.css'
 import { BsStar, BsStarFill, BsStarHalf } from 'react-icons/bs'
 import { useNavigate } from 'react-router-dom'
 
-const ProductCard = ({ data }) => {
+const ProductCard = ({ data, setModalOpen }) => {
     const { name, img, price, seller, ratingsCount, id } = data
     const navigate = useNavigate()
 
     const handleGoLink = () => {
         navigate(`/products/${id}`)
+        setModalOpen(false)
     }
     return (
         <div
             onClick={handleGoLink}
-            className='rounded-lg cart-card hover:bg-white hover:shadow-lg transition duration-150 cursor-pointer'
+            className='rounded-lg cart-card hover:bg-white hover:shadow-lg hover:text-[#222] cursor-pointer'
             data-aos="fade-up"
         >
 

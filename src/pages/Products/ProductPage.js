@@ -55,7 +55,7 @@ const ProductPage = () => {
                     <div className='flex gap-12'>
                         {/* PICK A SIZE */}
                         <div>
-                            <h2 className='mt-10 mb-2 text-md text-gradient font-bold'>Pick a Size</h2>
+                            <h2 className='mt-10 mb-2 text-md textGradient font-bold'>Pick a Size</h2>
                             <div className="flex gap-3">
                                 {
                                     sizes.map((item, index) => {
@@ -70,7 +70,7 @@ const ProductPage = () => {
 
                         {/* CHOOSE COLOURS */}
                         <div>
-                            <h2 className='mt-10 mb-2 text-md text-gradient font-bold'>Choose Color</h2>
+                            <h2 className='mt-10 mb-2 text-md textGradient font-bold'>Choose Color</h2>
                             <div className="flex gap-3">
                                 <span className='h-6 w-6 bg-primary rounded-full'></span>
                                 <span className='h-6 w-6 bg-[#222] rounded-full'></span>
@@ -157,7 +157,7 @@ const ProductPage = () => {
 
             {/* SIMILAR PRODUCTS */}
             <section className='my-32'>
-                <h2 className='text-2xl font-bold text-gradient mb-8'>Similar Products</h2>
+                <h2 className='text-2xl font-bold textGradient mb-8'>Similar Products</h2>
                 <div className='grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-5'>
                     {
                         products?.slice(0, 4)?.map((item, index) => <ProductCard key={index} data={item} />)

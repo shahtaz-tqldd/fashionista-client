@@ -74,7 +74,7 @@ const Testimonial = () => {
                     colors="primary:#b26836,secondary:#16c79e,tertiary:#f9c9c0"
                     style={{ width: "120px", height: "120px" }}>
                 </lord-icon>
-                <h2 className='font-bold text-[45px] text-gradient -mt-5'>From Our Customer</h2>
+                <h2 className='font-bold text-[45px] textGradient -mt-5'>From Our Customer</h2>
             </div>
             <div>
                 <Slider {...settings}>

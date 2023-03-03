@@ -22,7 +22,7 @@ const MyCartPage = () => {
     }
     return (
         <div>
-            <h1 className='text-gradient text-5xl font-bold text-center mb-8 leading-[70px]'>My Cart</h1>
+            <h1 className='textGradient text-5xl font-bold text-center mb-8 leading-[70px]'>My Cart</h1>
             <div className="overflow-x-auto w-full">
                 <table className="table w-full">
                     <thead>
