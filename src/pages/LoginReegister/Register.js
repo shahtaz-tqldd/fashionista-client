@@ -6,7 +6,7 @@ const Register = () => {
   useTitle('Open New Account')
   return (
     <section className='h-[70vh] w-full flex items-center justify-center'>
-      <div className='flex rounded-lg bg-white shadow-lg h-[450px] w-[700px]'>
+      <div className='flex rounded-lg bg-white shadow-lg h-[450px] w-[700px]' data-aos="fade-right">
         <div className='lg:w-1/2 p-8'>
           <h2 className='text-xl font-bold text-center mb-4'>Open New Account</h2>
           <form>

@@ -12,7 +12,7 @@ const Main = () => {
     const [cartOpen, setCartOpen] = useState(false)
     const {cartLength} = useContext(AuthContext)
     return (
-        <section className='mx-auto max-w-[1264px] px-8'>
+        <section className='mx-auto max-w-[1264px] px-4'>
             {/* Cart Menu */}
             {
                 !cartOpen &&

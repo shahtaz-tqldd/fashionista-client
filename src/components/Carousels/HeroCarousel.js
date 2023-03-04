@@ -17,30 +17,26 @@ const HeroCarousel = () => {
     }, [slideNumber]);
     const content = [
         {
+            title: 'Elegant Styles',
+            description: "We are offering the Fashion That Fits You Best. Grab Now!",
+            image: "https://www.seekpng.com/png/full/858-8584137_fashion-forward-episodes-offers-fashion.png",
+            
+        },
+        {
             title: 'Comfort Fasion',
-            description: "Image oene is about your trecking cause you couldn't provide",
-            button: 'Click Here',
+            description: "Elevate Your Style with our brand new products, Purchase Today!",
             image: "https://images.pngnice.com/download/2113/Excited-Girl-Holding-Shopping-Bag-Transparent-PNG.png",
 
         },
         {
-            title: 'Elegant Styles',
-            description: "Image oene is about your trecking cause you couldn't provide",
-            button: 'Click Here',
-            image: "https://www.seekpng.com/png/full/858-8584137_fashion-forward-episodes-offers-fashion.png",
-
-        },
-        {
             title: 'Royal Vibe',
-            description: "Image oene is about your trecking cause you couldn't provide",
-            button: 'Click Here',
+            description: "You one stop place to Shop with Confidence. Shopping is Easy!",
             image: "https://aaatap.com/merchant/assets/img/shopping_model.png"
 
         },
         {
-            title: 'Full of Life',
-            description: "Image oene is about your trecking cause you couldn't provide",
-            button: 'Click Here',
+            title: 'Stylish Look',
+            description: "Remarks the landmark of Always On Trend courtesy, Hurry Up!",
             image: "https://www.pngall.com/wp-content/uploads/5/Attractive-Model-Man-PNG-Picture.png"
 
         }
@@ -59,8 +55,8 @@ const HeroCarousel = () => {
                     <img src={item.image} alt="" className='relative z-10' />
                 </div>
                 <div className='info'>
-                    <h1 className='text-5xl font-bold uppercase text-white'>{item.title}</h1>
-                    <p className='mt-2 mb-8 text-lg w-3/4'>{item.description}</p>
+                    <h1 className='lg:text-5xl md:text-4xl text-2xl font-bold uppercase text-white'>{item.title}</h1>
+                    <p className='mt-2 lg:mb-8 md:mb-8 mb-5 lg:text-lg md:text-lg text-sm lg:w-3/4 md:w-3/4'>{item.description}</p>
                     <Link to='/products'><PrimaryButton>Shop Now</PrimaryButton></Link>
                 </div>
 

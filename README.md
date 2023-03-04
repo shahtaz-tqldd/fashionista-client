@@ -10,12 +10,21 @@ Fashionista - A Fashion Focused Ecommerce Website
 - open account
 
 ## Technology Stack
+### Frontend Technology
 - React JS
 - Tailwind CSS
 - Daisy UI
+
+### Backend Technology
+- Node JS
+- Express
 
 ## Package used
 - react routers dom
 - react icons
 - Lordicons
 - react slick for slider
+- react hot toast
+
+## Deployed in
+- Backend deployed in vercel

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import '../../../assets/styles/textstyles.css'
-import ProductCard from '../Cards/ProductCard'
+import ProductCard from '../../../components/Cards/ProductCard'
 
 const Popular = () => {
     const [popularProducts, setPopularProducts] = useState(null)

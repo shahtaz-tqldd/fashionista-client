@@ -2,7 +2,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import React from 'react'
 import Slider from "react-slick";
-import PromotionCard from "./PromotionCard";
+import PromotionCard from "../Cards/PromotionCard";
 const content = [
     {
         "name": "Black Dress",

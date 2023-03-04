@@ -3,11 +3,11 @@ import '../../assets/styles/cart.css'
 import CartProductCard from './CartProductCard'
 import cartImg from '../../assets/images/cart.png'
 import PrimaryButton from '../Buttons/PrimaryButton'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../context/AuthProvider'
 
 const Cart = ({ setCartOpen, cartOpen }) => {
-    const {cart, total} = useContext(AuthContext)
+    const { cart, total } = useContext(AuthContext)
 
     // GO TO CHECKOUT PAGE
     const navigate = useNavigate()
@@ -19,6 +19,11 @@ const Cart = ({ setCartOpen, cartOpen }) => {
     // GO TO MY CART PAGE
     const handleGoCart = () => {
         navigate('/cart')
+        setCartOpen(false)
+    }
+
+    const handleShopNow = () => {
+        navigate('/products')
         setCartOpen(false)
     }
     return (
@@ -34,7 +39,7 @@ const Cart = ({ setCartOpen, cartOpen }) => {
                     cart?.map((item, index) => <CartProductCard data={item} key={index} />)
                     :
                     <div className='flex items-center justify-center'>
-                        <img src={cartImg} className="h-[300px]" alt="" />
+                        <img src={cartImg} className=" w-[80%]" alt="" />
                     </div>
             }
             {
@@ -70,9 +75,9 @@ const Cart = ({ setCartOpen, cartOpen }) => {
                         </lord-icon>
                     </button>
                     :
-                    <Link to='/products' className='mt-12 flex justify-center'>
-                        <PrimaryButton>Shop Now </PrimaryButton>
-                    </Link>
+                    <div className='mt-12 flex justify-center'>
+                        <PrimaryButton eventHandler={handleShopNow}>Shop Now </PrimaryButton>
+                    </div>
             }
 
         </section>

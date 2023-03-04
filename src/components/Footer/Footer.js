@@ -2,7 +2,7 @@ import React from 'react';
 import { BsFacebook, BsInstagram, BsTwitter } from 'react-icons/bs';
 import { HiOutlineMail, HiOutlinePhone } from 'react-icons/hi';
 import { Link } from 'react-router-dom';
-import logo from '../../assets/icons/logo.png';
+import Logo from '../Typography/Logo';
 
 const Footer = () => {
     const navItems = [
@@ -21,15 +21,8 @@ const Footer = () => {
         <footer className="mt-16">
             <section className="grid lg:grid-cols-4 grid-cols-2 mb-4 pt-12">
                 <div>
-                    <Link
-                        to="/"
-                        className="textGradient text-[24px] font-bold flex items-center gap-2 transition duration-300 hover:opacity-70"
-                        style={{ fontFamily: "'Ubuntu', sans-serif" }}
-                    >
-                        <img src={logo} alt="" className="h-10" />
-                        fashionista
-                    </Link>
-                    <h2 className='uppercase mt-3 text-xs tracking-[4px]'>A clothing Brand</h2>
+                    <Logo/>
+                    <h2 className='uppercase mt-3 text-xs lg:tracking-[4px] tracking-[1px]'>A clothing Brand</h2>
                 </div>
                 <div>
                     <h2 className="mb-2 font-bold">Menubar</h2>
@@ -59,8 +52,8 @@ const Footer = () => {
             </section>
             <hr />
             <section className="py-5 flex justify-between">
-                <div>All rights reserved to Fashionista &copy; {new Date().getFullYear()}</div>
-                <div className="flex items-center gap-5 text-xl">
+                <div className='lg:text-md md:text-sm text-xs'>All rights reserved to Fashionista &copy; {new Date().getFullYear()}</div>
+                <div className="flex items-center gap-5 lg:text-xl md:text-lg text-md">
                     <a href="https://facebook.com/" target="_blank" rel="noreferrer">
                         <BsFacebook className="text-[#4267B2] hover:scale-125 tarnsition duration-300" />
                     </a>

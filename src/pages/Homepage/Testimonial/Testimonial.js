@@ -1,6 +1,7 @@
 import React from 'react'
 import Slider from 'react-slick'
 import TestimonialCard from '../../../components/Cards/TestimonialCard'
+import SectionHeader from '../../../components/Typography/SectionHeader'
 
 const Testimonial = () => {
     var settings = {
@@ -66,16 +67,12 @@ const Testimonial = () => {
     ]
     return (
         <section className='my-16'>
-            <h1 className='text-5xl font-bold text-center mb-8 leading-[70px]'>
-                <span className='textGradient'>From Our Customer</span>
-            </h1>
-            <div>
-                <Slider {...settings}>
-                    {
-                        testimonialData.map((item, index) => <TestimonialCard key={index} data={item} />)
-                    }
-                </Slider>
-            </div>
+            <SectionHeader>From Our Customer</SectionHeader>
+            <Slider {...settings}>
+                {
+                    testimonialData.map((item, index) => <TestimonialCard key={index} data={item} />)
+                }
+            </Slider>
         </section>
     )
 }

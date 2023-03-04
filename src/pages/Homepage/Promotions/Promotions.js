@@ -1,5 +1,5 @@
 import React from 'react'
-import PromotionSlider from './PromotionSlider'
+import PromotionSlider from '../../../components/Slider/PromotionSlider'
 
 const Promotions = () => {
   return (

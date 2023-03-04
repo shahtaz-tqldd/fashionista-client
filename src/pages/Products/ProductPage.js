@@ -3,11 +3,11 @@ import { useLoaderData, useNavigate } from 'react-router-dom'
 import AddToCartButton from '../../components/Buttons/AddToCartButton'
 import { IoMdAdd, IoMdRemove } from 'react-icons/io'
 import ProductReview from './ProductReview'
-import ProductCard from '../Homepage/Cards/ProductCard'
 import useTitle from '../../hooks/useTitle'
 import Subscribe from '../Homepage/Subscribe/Subscribe'
 import { addToDb, getStoredCart, removeOneFromDb } from '../../assets/utilities/dbLocal'
 import { AuthContext } from '../../context/AuthProvider'
+import ProductCard from '../../components/Cards/ProductCard'
 
 const ProductPage = () => {
     const { id: productId, name, img, seller, price, category } = useLoaderData()
@@ -35,12 +35,6 @@ const ProductPage = () => {
     const quantity = cart?.find(c => c.id === productId)?.quantity
 
     const handleAddToCart = () => {
-        const productDetails = {
-            name: name,
-            number: quantity,
-            size: sizes[size - 1]
-        }
-        console.log(productDetails)
         addToDb(productId)
     }
 
@@ -60,7 +54,7 @@ const ProductPage = () => {
     }
     return (
         <div>
-            <section className='flex lg:flex-row flex-col gap-12 pt-4'>
+            <section className='flex lg:flex-row flex-col gap-12'>
 
                 {/* Product Image */}
                 <div className='lg:w-1/2'>
@@ -68,7 +62,7 @@ const ProductPage = () => {
                 </div>
 
                 {/* Product Details */}
-                <div className='lg:w-1/2'>
+                <div className='lg:w-1/2 pt-4'>
                     <span className='text-error'>{seller}</span>
                     <h1 className='text-3xl font-bold'>{name}</h1>
                     <h2 className='text-4xl mt-6'>BDT {price * 10}</h2>
@@ -118,14 +112,14 @@ const ProductPage = () => {
                                     </lord-icon>
                                 </span>
                             </div>
-                            : <div className='flex items-center gap-12 mt-10'>
+                            : <div className='flex items-center lg:gap-12 gap-6 mt-10'>
                                 {/* Add More Button */}
                                 <div className='flex items-center gap-3'>
-                                    <button className='btn rounded-sm btn-error text-white' disabled={quantity <= 1} onClick={handleRemoveOne}><IoMdRemove /></button>
+                                    <button className='btn lg:btn-md btn-sm rounded-sm btn-error text-white' disabled={quantity <= 1} onClick={handleRemoveOne}><IoMdRemove /></button>
                                     <h4>{quantity}</h4>
-                                    <button className='btn rounded-sm text-white border-none' style={{ backgroundColor: "#16c79e" }} onClick={handleAddOne}><IoMdAdd /></button>
+                                    <button className='btn lg:btn-md btn-sm rounded-sm text-white border-none' style={{ backgroundColor: "#16c79e" }} onClick={handleAddOne}><IoMdAdd /></button>
                                 </div>
-                                <button onClick={handleGoCart} className='btn btn-wide normal-case text-white'>
+                                <button onClick={handleGoCart} className='btn lg:btn-md btn-sm lg:btn-wide lg:px-0 px-4 normal-case text-white lg:rounded-md rounded-sm'>
                                     <lord-icon
                                         target="button"
                                         src="https://cdn.lordicon.com/medpcfcy.json"

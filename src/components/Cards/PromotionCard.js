@@ -1,6 +1,6 @@
 import React from 'react'
-import PrimaryButton from '../../../components/Buttons/PrimaryButton'
-import '../../../assets/styles/style.css'
+import PrimaryButton from '../Buttons/PrimaryButton'
+import '../../assets/styles/style.css'
 
 const PromotionCard = ({ data }) => {
     const { name, off, bg } = data

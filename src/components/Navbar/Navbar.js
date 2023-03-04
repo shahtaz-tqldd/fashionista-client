@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import MediumButton from '../Buttons/MediumButton';
+import { FiLogIn } from 'react-icons/fi'
 import SearchModal from '../Modals/SearchModal';
-import logo from '../../assets/icons/logo.png'
+import Logo from '../Typography/Logo';
 
 const Navbar = () => {
     const [modalOpen, setModalOpen] = useState(false);
@@ -51,12 +52,7 @@ const Navbar = () => {
                             {navItems}
                         </ul>
                     </div>
-
-                    <Link to='/' className='textGradient text-[24px] font-bold flex items-center gap-2 transition duration-300 hover:opacity-70' style={{ fontFamily: "'Ubuntu', sans-serif" }}>
-                        <img src={logo} alt="" className='h-10' />
-                        fashionista
-                    </Link>
-
+                    <Logo/>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
@@ -71,12 +67,13 @@ const Navbar = () => {
                             trigger="hover"
                             style={{ height: "20px", width: "20px" }}>
                         </lord-icon>
-                        Search
+                        <span className='lg:block md:block hidden'>Search</span>
                     </button>
 
                     {modalOpen && <SearchModal setModalOpen={setModalOpen} />}
 
-                    <Link to='/login' className='ml-2'><MediumButton btnSpecially={'bg-[#EC7272] text-white'}>Sign In</MediumButton></Link>
+                    <Link to='/login' className='ml-2 lg:block md:block hidden'><MediumButton btnSpecially={'bg-[#EC7272] text-white'}>Sign In</MediumButton></Link>
+                    <Link to='/login' className='mr-2 lg:hidden md:hidden block'><FiLogIn className='text-xl text-error'/></Link>
                 </div>
             </div>
         </section>

@@ -4,13 +4,14 @@ import { IoMdAdd, IoMdRemove } from 'react-icons/io'
 import { addToDb, removeFromDb, removeOneFromDb } from '../../assets/utilities/dbLocal'
 import useTitle from '../../hooks/useTitle'
 import { AuthContext } from '../../context/AuthProvider'
+import SectionHeader from '../../components/Typography/SectionHeader'
 
 const MyCartPage = () => {
     useTitle("My Cart")
     const { cart, total } = useContext(AuthContext)
-    
+
     // ADD ONE MORE PRODUCT
-    const handleAddOneMore = (id) => {
+    const handleAddOne = (id) => {
         addToDb(id)
     }
     // REMOVE ADDED PRODUCT
@@ -28,10 +29,8 @@ const MyCartPage = () => {
     }
     return (
         <div>
-            <h1 className='text-5xl font-bold text-center mb-8 leading-[70px]'>
-                <span className='textGradient'>My Cart</span>
-            </h1>
-            <div className="overflow-x-auto w-full">
+            <SectionHeader>My Cart</SectionHeader>
+            <div className="overflow-x-auto w-full" data-aos="fade-up">
                 <table className="table w-full">
                     <thead>
                         <tr>
@@ -44,36 +43,36 @@ const MyCartPage = () => {
                     </thead>
                     <tbody>
                         {cart?.length ?
-                            cart.map((item, index) => <tr key={index}>
+                            cart.map(({name, id, img, price, quantity}, index) => <tr key={index}>
                                 <td>
                                     <div className="flex items-center space-x-3">
                                         <div className="avatar">
                                             <div className="mask mask-squircle w-12 h-12">
-                                                <img src={item.img} alt="Avatar Tailwind CSS Component" />
+                                                <img src={img} alt="Avatar Tailwind CSS Component" />
                                             </div>
                                         </div>
                                         <div>
-                                            <div className="font-bold capitalize">{item.name.toLowerCase()}</div>
+                                            <div className="font-bold capitalize">{name.toLowerCase()}</div>
                                             <div className="text-sm opacity-50">Size: 40</div>
                                             <div className="text-sm opacity-50">Colors: Blue</div>
                                         </div>
                                     </div>
                                 </td>
                                 <td>
-                                    <h2 className='text-2xl font-bold'>BDT {item.price * item.quantity * 10}</h2>
+                                    <h2 className='text-2xl font-bold'>BDT {price * quantity * 10}</h2>
                                 </td>
                                 <td>
                                     <div className='flex items-center gap-3'>
-                                        <button className='btn btn-sm rounded-sm btn-error text-white' disabled={item.quantity <= 1} onClick={() => handleRemoveOne(item.id)}><IoMdRemove /></button>
-                                        <h4>{item.quantity}</h4>
-                                        <button className='btn btn-sm rounded-sm btn-error text-white' onClick={() => handleAddOneMore(item.id)}><IoMdAdd /></button>
+                                        <button className='btn btn-sm rounded-sm btn-error text-white' disabled={quantity <= 1} onClick={()=>handleRemoveOne(id)}><IoMdRemove /></button>
+                                        <h4>{quantity}</h4>
+                                        <button className='btn btn-sm rounded-sm text-white border-none' style={{ backgroundColor: "#16c79e" }} onClick={()=>handleAddOne(id)}><IoMdAdd /></button>
                                     </div>
                                 </td>
                                 <td>
-                                    <Link to={`/products/${item.id}`} className="btn btn-ghost btn-xs">details</Link>
+                                    <Link to={`/products/${id}`} className="btn btn-ghost btn-xs">details</Link>
                                 </td>
                                 <td>
-                                    <button onClick={() => handleRemoveFromCart(item.id)} className='h-6 w-6'>
+                                    <button onClick={() => handleRemoveFromCart(id)} className='h-6 w-6'>
                                         <lord-icon
                                             src="https://cdn.lordicon.com/jmkrnisz.json"
                                             trigger="hover"
@@ -91,7 +90,7 @@ const MyCartPage = () => {
                 </table>
             </div>
 
-            {cart.length > 0 && <div className='mt-16 w-[360px] ml-auto p-10 bg-white rounded-2xl shadow-lg'>
+            {cart.length > 0 && <div className='mt-16 w-[360px] ml-auto p-10 bg-white rounded-2xl shadow-lg' data-aos="fade-left">
                 <div className='flex justify-between items-end'>
                     <span className='text-xl'>Subtotal</span>
                     <h1 className='text-3xl font-bold'>BDT {total}</h1>
