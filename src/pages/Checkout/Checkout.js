@@ -1,14 +1,16 @@
 import React, { useContext } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { deleteShoppingCart } from '../../assets/utilities/dbLocal'
 import { AuthContext } from '../../context/AuthProvider'
 import useTitle from '../../hooks/useTitle'
 
 const Checkout = () => {
   useTitle("Checkout")
-  const {cart, total} = useContext(AuthContext)
+  const { cart, total } = useContext(AuthContext)
   const navigate = useNavigate()
-  const handlePlaceOrder =()=>{
+  const handlePlaceOrder = () => {
     navigate('/success')
+    deleteShoppingCart()
   }
   return (
     <React.Fragment>

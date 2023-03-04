@@ -9,9 +9,33 @@ const Navbar = () => {
 
     const navItems = (
         <>
-            <li><Link to='/products'>Collections</Link></li>
-            <li><Link to='/stores'>Store Location</Link></li>
-            <li><Link to='/contact'>Contact</Link></li>
+            <li><Link to='/products' className='flex items-center gap-1'>
+                <lord-icon
+                    target="a"
+                    src="https://cdn.lordicon.com/hyhnpiza.json"
+                    trigger="hover"
+                    style={{ height: "20px", width: "20px" }}>
+                </lord-icon>
+                Collections</Link>
+            </li>
+            <li><Link to='/stores' className='flex items-center gap-1'>
+                <lord-icon
+                    target="a"
+                    src="https://cdn.lordicon.com/osuxyevn.json"
+                    trigger="hover"
+                    style={{ height: "20px", width: "20px" }}>
+                </lord-icon>
+                Store Location
+            </Link></li>
+            <li><Link to='/contact' className='flex items-center gap-1'>
+                <lord-icon
+                    target="a"
+                    src="https://cdn.lordicon.com/hpivxauj.json"
+                    trigger="hover"
+                    style={{ height: "20px", width: "20px" }}>
+                </lord-icon>
+                Contact
+            </Link></li>
         </>
     );
 
@@ -28,7 +52,7 @@ const Navbar = () => {
                         </ul>
                     </div>
 
-                    <Link to='/' className='textGradient text-[24px] font-bold flex items-center gap-2' style={{ fontFamily: "'Ubuntu', sans-serif" }}>
+                    <Link to='/' className='textGradient text-[24px] font-bold flex items-center gap-2 transition duration-300 hover:opacity-70' style={{ fontFamily: "'Ubuntu', sans-serif" }}>
                         <img src={logo} alt="" className='h-10' />
                         fashionista
                     </Link>

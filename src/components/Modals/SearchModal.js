@@ -24,7 +24,7 @@ const SearchModal = ({ setModalOpen }) => {
   return (
     <div className="min-h-screen w-full bg-opacity-90 bg-black fixed top-0 left-0 overflow-y-scroll">
       <section className="max-w-6xl mx-auto">
-        <button className="absolute right-10 top-10 font-bold bg-white rounded-full h-8 w-8" onClick={() => setModalOpen(false)}>
+        <button className="fixed right-10 top-10 font-bold bg-white rounded-full h-8 w-8" onClick={() => setModalOpen(false)}>
           ✕
         </button>
         <h1 className="text-center text-5xl font-bold pt-5">

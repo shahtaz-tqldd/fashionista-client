@@ -9,7 +9,9 @@ const ProductCard = ({ data, setModalOpen }) => {
 
     const handleGoLink = () => {
         navigate(`/products/${id}`)
-        setModalOpen(false)
+        setTimeout(() => {
+            setModalOpen(false)
+        }, 700)
     }
     return (
         <div

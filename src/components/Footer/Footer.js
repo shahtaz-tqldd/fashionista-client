@@ -23,7 +23,7 @@ const Footer = () => {
                 <div>
                     <Link
                         to="/"
-                        className="textGradient text-[24px] font-bold flex items-center gap-2"
+                        className="textGradient text-[24px] font-bold flex items-center gap-2 transition duration-300 hover:opacity-70"
                         style={{ fontFamily: "'Ubuntu', sans-serif" }}
                     >
                         <img src={logo} alt="" className="h-10" />

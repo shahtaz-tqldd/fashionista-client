@@ -1,12 +1,18 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { FiPlusCircle, FiMinusCircle } from 'react-icons/fi'
-import { removeFromDb } from '../../assets/utilities/dbLocal'
+import { addToDb, removeFromDb, removeOneFromDb } from '../../assets/utilities/dbLocal'
 
 const CartProductCard = ({ data }) => {
     const { img, name, price, quantity, id } = data
-    const [number, setNumber] = useState(quantity)
     const handleRemoveFromCart = () => {
         removeFromDb(id)
+    }
+    const handleAddOneMore = () => {
+        addToDb(id)
+    }
+
+    const handleRemoveOne = () => {
+        removeOneFromDb(id)
     }
     return (
         <div className='flex justify-between items-center py-2 px-3 shadow-lg bg-[#F8F4EA] rounded-lg my-2'>
@@ -16,12 +22,12 @@ const CartProductCard = ({ data }) => {
                     <h2 className='font-bold text-md capitalize leading-5'>{name.toLowerCase()}</h2>
                     <p className='my-[5px]'>BDT {price * 10}</p>
                     <div className='flex items-center gap-2'>
-                        <button disabled={number <= 1} onClick={() => setNumber(number - 1)}>
-                            <FiMinusCircle className={number <= 1 ? 'text-[#aaa]':'text-[#EC7272]'}/>
+                        <button disabled={quantity <= 1} onClick={handleRemoveOne}>
+                            <FiMinusCircle className={quantity <= 1 ? 'text-[#aaa]' : 'text-[#EC7272]'} />
                         </button>
-                        <p>{number}</p>
-                        <button onClick={() => setNumber(number + 1)}>
-                            <FiPlusCircle className='text-[#219f94]'/>
+                        <p>{quantity}</p>
+                        <button onClick={handleAddOneMore}>
+                            <FiPlusCircle className='text-[#219f94]' />
                         </button>
                     </div>
                 </div>

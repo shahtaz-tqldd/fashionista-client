@@ -66,16 +66,9 @@ const Testimonial = () => {
     ]
     return (
         <section className='my-16'>
-            <div className='flex flex-col items-center justify-center mb-8'>
-                <lord-icon
-                    target="div"
-                    src="https://cdn.lordicon.com/itmsnfur.json"
-                    trigger="hover"
-                    colors="primary:#b26836,secondary:#16c79e,tertiary:#f9c9c0"
-                    style={{ width: "120px", height: "120px" }}>
-                </lord-icon>
-                <h2 className='font-bold text-[45px] textGradient -mt-5'>From Our Customer</h2>
-            </div>
+            <h1 className='text-5xl font-bold text-center mb-8 leading-[70px]'>
+                <span className='textGradient'>From Our Customer</span>
+            </h1>
             <div>
                 <Slider {...settings}>
                     {

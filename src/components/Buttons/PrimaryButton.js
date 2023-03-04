@@ -1,8 +1,8 @@
 import React from 'react'
 
-const PrimaryButton = ({ children }) => {
+const PrimaryButton = ({ children, eventHandler }) => {
     return (
-        <button className='btn text-white normal-case px-8 rounded-md border-none' style={{backgroundColor:"#EC7272"}}>
+        <button onClick={eventHandler} className='btn text-white normal-case px-8 rounded-md border-none' style={{backgroundColor:"#EC7272"}}>
             {children} &nbsp;
             <lord-icon
                 target="button"
