@@ -11,7 +11,33 @@
 .cart-add-hover:hover .cart-add-btn{
     display: flex;
     gap: 7px;
+    animation-name: hover-animation-btn;
+    animation-duration: 0.3s;
 }
-.cart-add-hover:hover{
-    opacity: .8;
+
+@keyframes hover-animation-btn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.overlay{
+    display: none;
+}
+.cart-add-hover:hover .overlay {
+    display: block;
+    background-color: rgb(255, 231, 231);
+    opacity: .92;
+    position: absolute;
+    border-radius: 10px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    animation-name: hover-animation;
+    animation-duration: 0.3s;
+}
+
+@keyframes hover-animation {
+    from { opacity: 0; }
+    to { opacity: .92; }
 }

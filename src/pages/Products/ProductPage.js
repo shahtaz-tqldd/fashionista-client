@@ -79,8 +79,8 @@ const ProductPage = () => {
             <section className='flex lg:flex-row flex-col gap-12'>
 
                 {/* Product Image */}
-                <div className='lg:w-1/2'>
-                    <img src={img} alt="" className='w-full' />
+                <div className='lg:w-1/2 flex justify-center rounded-xl' style={{ backgroundColor:"#eceff1", maxHeight:"600px"}}>
+                    <img src={img} alt="" className='w-auto object-cover rounded-xl' style={{maxHeight:"600px",}}/>
                 </div>
 
                 {/* Product Details */}

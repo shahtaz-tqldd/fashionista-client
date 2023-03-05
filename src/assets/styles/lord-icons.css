@@ -1,0 +1,8 @@
+/* SEARCH ICON COLOR CHANGE ON HOVER */
+.set-color{
+    color: #666;
+}
+.color-change:hover .set-color{
+    color: #EC7272;
+    transition: 0.3s;
+}

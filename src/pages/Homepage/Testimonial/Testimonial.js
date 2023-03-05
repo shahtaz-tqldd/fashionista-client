@@ -14,6 +14,7 @@ const Testimonial = () => {
         speed: 500,
         autoplaySpeed: 3500,
         cssEase: "linear",
+        pauseOnHover: false,
         responsive: [
             {
                 breakpoint: 1024,

@@ -48,6 +48,7 @@ const WishListCard = ({ data }) => {
                     </lord-icon>
                 </button>
             </div>
+            <div className='overlay'></div>
         </div>
     )
 }
