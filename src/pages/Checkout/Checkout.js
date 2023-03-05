@@ -7,8 +7,12 @@ import useTitle from '../../hooks/useTitle'
 
 const Checkout = () => {
   useTitle("Checkout")
-  const { cart, total } = useContext(AuthContext)
+  const { cart, total, user } = useContext(AuthContext)
+  const { displayName, email } = user
   const navigate = useNavigate()
+  const handleSubmit = (e) => {
+    e.preventDefault()
+  }
   const handlePlaceOrder = () => {
     navigate('/success')
     addToPurchased(cart)
@@ -26,14 +30,14 @@ const Checkout = () => {
       <div className='flex lg:flex-row flex-col gap-12'>
         <div className='lg:w-[60%]'>
           <h2 className='text-xl font-bold mb-6'>Billing Information</h2>
-          <form data-aos="fade-right">
-            <input type="text" placeholder="Full Name" className="input input-bordered input-info w-full mb-2" />
-            <input type="text" placeholder="House No." className="input input-bordered input-info w-full my-2" />
-            <input type="text" placeholder="Street" className="input input-bordered input-info w-full my-2" />
-            <input type="text" placeholder="Address" className="input input-bordered input-info w-full my-2" />
-            <input type="text" placeholder="Zip Code" className="input input-bordered input-info w-full my-2" />
-            <input type="text" placeholder="Phone" className="input input-bordered input-info w-full my-2" />
-            <input type="text" placeholder="Email" className="input input-bordered input-info w-full my-2" />
+          <form onSubmit={handleSubmit} data-aos="fade-right">
+            <input type="text" placeholder="Full Name" value={displayName} className="input input-bordered input-info w-full mb-2" />
+            <input type="text" placeholder="House No." className="input input-bordered input-info w-full my-2" required />
+            <input type="text" placeholder="Street" className="input input-bordered input-info w-full my-2" required />
+            <input type="text" placeholder="Address" className="input input-bordered input-info w-full my-2" required />
+            <input type="text" placeholder="Zip Code" className="input input-bordered input-info w-full my-2" required />
+            <input type="text" placeholder="Phone" className="input input-bordered input-info w-full my-2" required />
+            <input type="text" placeholder="Email" value={email} className="input input-bordered input-info w-full my-2" required />
           </form>
         </div>
         <div className='lg:w-[40%]'>
@@ -52,7 +56,13 @@ const Checkout = () => {
                 </div>
                 <h2>BDT {item.price * 10}</h2>
               </div>
-              ) : <h2>No Items added! Please go to <Link to='/products' className='text-primary'>Shop</Link></h2>
+              ) : <h2 className='flex gap-1'>No Items added! Please go to <Link to='/products' className='text-colorGreen flex items-center gap-1'>Shop <lord-icon
+              target="a"
+              src="https://cdn.lordicon.com/zmkotitn.json"
+              trigger="hover"
+              colors="primary:#16c79e"
+              style={{ width: "20px", height: "20px" }}>
+          </lord-icon></Link></h2>
             }
             <hr className='my-5' />
             <div className='flex justify-between'>

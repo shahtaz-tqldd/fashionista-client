@@ -23,7 +23,7 @@ const CartProductCard = ({ data }) => {
                     <p className='my-[5px]'>BDT {price * 10}</p>
                     <div className='flex items-center gap-2'>
                         <button disabled={quantity <= 1} onClick={handleRemoveOne}>
-                            <FiMinusCircle className={quantity <= 1 ? 'text-[#aaa]' : 'text-[#EC7272]'} />
+                            <FiMinusCircle className={quantity <= 1 ? 'text-[#aaa]' : 'text-colorRed'} />
                         </button>
                         <p>{quantity}</p>
                         <button onClick={handleAddOneMore}>

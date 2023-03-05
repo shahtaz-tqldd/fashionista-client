@@ -45,7 +45,7 @@ const StoreLocation = () => {
                         storesData?.map((item, index) => <div
                             key={index}
                             onClick={() => { setSelectedTab(index + 1); window.scrollTo({ top: 0, behavior: "smooth" }) }}
-                            className={`cursor-pointer ${selectedTab === index + 1 && "text-[#16c79e] "}`}
+                            className={`cursor-pointer ${selectedTab === index + 1 && "text-colorGreen "}`}
                         >
                             <span className='flex items-start gap-1'>
                                 <lord-icon

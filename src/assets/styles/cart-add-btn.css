@@ -25,8 +25,8 @@
 }
 .cart-add-hover:hover .overlay {
     display: block;
-    background-color: rgb(255, 231, 231);
-    opacity: .92;
+    background-color: rgb(255, 255, 255);
+    opacity: .85;
     position: absolute;
     border-radius: 10px;
     top: 0;
@@ -39,5 +39,5 @@
 
 @keyframes hover-animation {
     from { opacity: 0; }
-    to { opacity: .92; }
+    to { opacity: .85; }
 }

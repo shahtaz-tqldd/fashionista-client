@@ -95,3 +95,7 @@
         padding: 0.8rem 1.5rem;
     }
 }
+
+.scale-down{
+    transform: scale(0.85);
+}

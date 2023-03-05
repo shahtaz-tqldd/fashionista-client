@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import MediumButton from '../Buttons/MediumButton';
 import { FiLogIn } from 'react-icons/fi'
 import { BsCart2 } from 'react-icons/bs'
@@ -7,11 +7,27 @@ import SearchModal from '../Modals/SearchModal';
 import Logo from '../Typography/Logo';
 import { AuthContext } from '../../context/AuthProvider';
 import '../../assets/styles/lord-icons.css'
+import { toast } from 'react-hot-toast';
+import { IoIosArrowDropdownCircle } from 'react-icons/io';
+import { getPurchasedCart } from '../../assets/utilities/purchasedDb';
 
 const Navbar = () => {
     const [modalOpen, setModalOpen] = useState(false);
-    const { cartOpen, setCartOpen } = useContext(AuthContext)
+    const { cartOpen, setCartOpen, logout, user } = useContext(AuthContext)
+    const purchased = getPurchasedCart()
 
+    const navigate = useNavigate()
+    // logout 
+    const handleLogout = () => {
+        logout()
+            .then(() => {
+                toast.error('You are logged out!')
+                navigate('/')
+            })
+            .catch(err => console.error(err))
+    }
+
+    const name = user?.displayName?.split(' ')[0]
     const navItems = (
         <>
             <li><Link to='/products' className='flex items-center gap-1'>
@@ -73,22 +89,81 @@ const Navbar = () => {
                         </lord-icon>
                         <span className='lg:block md:block hidden'>Search</span>
                     </button>
-                    <Link to='/wish-list' className="hover:text-primary flex items-center gap-1 mr-5 color-change">
-                        <lord-icon
-                            target="a"
-                            src="https://cdn.lordicon.com/pnhskdva.json"
-                            trigger="hover"
-                            class="set-color"
-                            style={{ height: "20px", width: "20px" }}>
-                        </lord-icon>
-                        <span className='lg:block md:block hidden'>WishList</span>
-                    </Link>
+                    {
+                        !user &&
+                        <Link to='/wish-list' className="hover:text-primary flex items-center gap-1 mr-5 color-change">
+                            <lord-icon
+                                target="a"
+                                src="https://cdn.lordicon.com/pnhskdva.json"
+                                trigger="hover"
+                                class="set-color"
+                                style={{ height: "20px", width: "20px" }}>
+                            </lord-icon>
+                            <span className='lg:block md:block hidden'>WishList</span>
+                        </Link>
+                    }
 
                     {modalOpen && <SearchModal setModalOpen={setModalOpen} />}
 
                     <button onClick={() => setCartOpen(!cartOpen)} className='mr-5 lg:hidden md:hidden block'><BsCart2 className='text-xl pb-[1px] text-error' /></button>
-                    <Link to='/login' className='mr-2 lg:hidden md:hidden block'><FiLogIn className='text-xl text-[#EC7272]' /></Link>
-                    <Link to='/login' className='ml-2 lg:block md:block hidden'><MediumButton btnSpecially={'bg-[#EC7272] text-white'}>Sign In</MediumButton></Link>
+
+                    {/* SIGN IN */}
+                    {!user ? <>
+                        <Link to='/login' className='mr-2 lg:hidden md:hidden block'><FiLogIn className='text-xl text-colorRed' /></Link>
+                        <Link to='/login' className='ml-2 lg:block md:block hidden'><MediumButton btnSpecially={'bg-colorRed text-white'}>Sign In</MediumButton></Link>
+                    </> :
+                        <>
+                            <span className='mr-2 font-bold textGradient' style={{ zIndex: "10" }}>{name}</span>
+                            <div className="dropdown">
+                                <label tabIndex={0}>
+                                    <label tabIndex={0}>
+                                        <IoIosArrowDropdownCircle className='text-xl cursor-pointer text-colorRed' />
+                                    </label>
+                                </label>
+                                <ul tabIndex={0} className="menu menu-compact dropdown-content -ml-44 mt-6 p-2 shadow bg-[#DDF7E3] rounded-lg text-base-content w-52">
+                                    <li>
+                                        <Link to='/cart' className="hover:text-primary flex items-center gap-1">
+                                            <lord-icon
+                                                target="a"
+                                                src="https://cdn.lordicon.com/hyhnpiza.json"
+                                                trigger="hover"
+                                                style={{ height: "20px", width: "20px" }}>
+                                            </lord-icon>
+                                            My Cart</Link>
+                                    </li>
+                                    <li>
+                                        <Link to='/wish-list' className="hover:text-primary flex items-center gap-1">
+                                            <lord-icon
+                                                target="a"
+                                                src="https://cdn.lordicon.com/pnhskdva.json"
+                                                trigger="hover"
+                                                class="set-color"
+                                                style={{ height: "20px", width: "20px" }}>
+                                            </lord-icon>
+                                            <span className='lg:block md:block hidden'>WishList</span>
+                                        </Link>
+                                    </li>
+                                    {
+                                        purchased?.length > 0 &&
+                                        <li>
+                                            <Link to='/success' className="hover:text-primary flex items-center gap-1">
+                                                <lord-icon
+                                                    target="a"
+                                                    src="https://cdn.lordicon.com/medpcfcy.json"
+                                                    trigger="hover"
+                                                    class="set-color"
+                                                    style={{ height: "20px", width: "20px" }}>
+                                                </lord-icon>
+                                                <span className='lg:block md:block hidden'>My Orders</span>
+                                            </Link>
+                                        </li>
+                                    }
+
+                                    <li><button onClick={handleLogout} className="btn mt-4 w-full text-white normal-case hover:btn-error hover:text-white">Logout</button></li>
+                                </ul>
+                            </div>
+                        </>
+                    }
                 </div>
             </div>
         </section>

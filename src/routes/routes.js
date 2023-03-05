@@ -11,6 +11,7 @@ import Products from "../pages/Products/Products";
 import StoreLocation from "../pages/StoreLocation.js/StoreLocation";
 import SuccessPage from "../pages/SuccessPage/SuccessPage";
 import WishList from "../pages/WishList/WishList";
+import PrivateRoute from "./PrivateRoute";
 
 export const routes = createBrowserRouter([{
     path: '/',
@@ -30,7 +31,7 @@ export const routes = createBrowserRouter([{
         },
         {
             path: '/checkout',
-            element: <Checkout />
+            element: <PrivateRoute><Checkout /></PrivateRoute>
         },
         {
             path: '/contact',
@@ -38,7 +39,7 @@ export const routes = createBrowserRouter([{
         },
         {
             path: '/success',
-            element: <SuccessPage />
+            element: <PrivateRoute><SuccessPage /></PrivateRoute>
         },
         {
             path: '/cart',
