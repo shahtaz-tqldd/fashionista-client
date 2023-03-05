@@ -1,12 +1,15 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import MediumButton from '../Buttons/MediumButton';
 import { FiLogIn } from 'react-icons/fi'
+import { BsCart2 } from 'react-icons/bs'
 import SearchModal from '../Modals/SearchModal';
 import Logo from '../Typography/Logo';
+import { AuthContext } from '../../context/AuthProvider';
 
 const Navbar = () => {
     const [modalOpen, setModalOpen] = useState(false);
+    const { cartOpen, setCartOpen } = useContext(AuthContext)
 
     const navItems = (
         <>
@@ -52,7 +55,7 @@ const Navbar = () => {
                             {navItems}
                         </ul>
                     </div>
-                    <Logo/>
+                    <Logo />
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
@@ -60,7 +63,7 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <button onClick={() => setModalOpen(true)} className="cursor-pointer hover:text-primary flex items-center gap-1 mr-6">
+                    <button onClick={() => setModalOpen(true)} className="cursor-pointer hover:text-primary flex items-center gap-1 mr-5">
                         <lord-icon
                             target="button"
                             src="https://cdn.lordicon.com/xfftupfv.json"
@@ -69,11 +72,21 @@ const Navbar = () => {
                         </lord-icon>
                         <span className='lg:block md:block hidden'>Search</span>
                     </button>
+                    <Link to='/wish-list' className="hover:text-primary flex items-center gap-1 mr-5">
+                        <lord-icon
+                            target="a"
+                            src="https://cdn.lordicon.com/pnhskdva.json"
+                            trigger="hover"
+                            style={{ height: "20px", width: "20px" }}>
+                        </lord-icon>
+                        <span className='lg:block md:block hidden'>WishList</span>
+                    </Link>
 
                     {modalOpen && <SearchModal setModalOpen={setModalOpen} />}
 
+                    <button onClick={() => setCartOpen(!cartOpen)} className='mr-5 lg:hidden md:hidden block'><BsCart2 className='text-xl pb-[1px] text-error' /></button>
+                    <Link to='/login' className='mr-2 lg:hidden md:hidden block'><FiLogIn className='text-xl text-error' /></Link>
                     <Link to='/login' className='ml-2 lg:block md:block hidden'><MediumButton btnSpecially={'bg-[#EC7272] text-white'}>Sign In</MediumButton></Link>
-                    <Link to='/login' className='mr-2 lg:hidden md:hidden block'><FiLogIn className='text-xl text-error'/></Link>
                 </div>
             </div>
         </section>

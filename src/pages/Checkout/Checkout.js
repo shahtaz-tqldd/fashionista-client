@@ -15,14 +15,15 @@ const Checkout = () => {
     deleteShoppingCart()
   }
   return (
-    <React.Fragment>
+    <section className='flex flex-col'>
       <div className="alert alert-info shadow-lg mb-8">
         <div>
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="stroke-current flex-shrink-0 w-6 h-6"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
           <span>Get 20% Discount by Subscribe our Newsletter</span>
         </div>
       </div>
-      <section className='flex lg:flex-row flex-col gap-12'>
+
+      <div className='flex lg:flex-row flex-col gap-12'>
         <div className='lg:w-[60%]'>
           <h2 className='text-xl font-bold mb-6'>Billing Information</h2>
           <form data-aos="fade-right">
@@ -73,13 +74,13 @@ const Checkout = () => {
             </div>
 
 
-            <button onClick={handlePlaceOrder} disabled={cart.length === 0} className='mt-8 btn btn-primary w-full normal-case text-white'>Place Order</button>
+            <button onClick={handlePlaceOrder} disabled={cart?.length === 0} className='mt-8 btn btn-primary w-full normal-case text-white'>Place Order</button>
 
 
           </div>
         </div>
-      </section>
-    </React.Fragment>
+      </div>
+    </section>
   )
 }
 

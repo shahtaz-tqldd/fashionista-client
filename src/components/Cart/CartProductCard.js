@@ -19,7 +19,7 @@ const CartProductCard = ({ data }) => {
             <div className='flex gap-5'>
                 <img src={img} alt="" className='h-16' />
                 <div>
-                    <h2 className='font-bold text-md capitalize leading-5'>{name.toLowerCase()}</h2>
+                    <h2 className='font-bold lg:text-md text-sm capitalize lg:leading-5 leading-4'>{name.toLowerCase()}</h2>
                     <p className='my-[5px]'>BDT {price * 10}</p>
                     <div className='flex items-center gap-2'>
                         <button disabled={quantity <= 1} onClick={handleRemoveOne}>

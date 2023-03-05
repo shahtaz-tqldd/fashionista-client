@@ -1,0 +1,17 @@
+.cart-add-hover{
+    position: relative;
+}
+.cart-add-btn{
+    position: absolute;
+    z-index: 10;
+    transform: translate(50%, 50%);
+    right: 50%;
+    bottom: 50%;
+}
+.cart-add-hover:hover .cart-add-btn{
+    display: flex;
+    gap: 7px;
+}
+.cart-add-hover:hover{
+    opacity: .8;
+}

@@ -27,7 +27,7 @@ const Cart = ({ setCartOpen, cartOpen }) => {
         setCartOpen(false)
     }
     return (
-        <section className={`cart top-0 z-50 h-[100vh] bg-[#CEEDC7] lg:w-[30%] w-3/4 py-6 px-8 ${cartOpen && 'open'}`} >
+        <section className={`cart top-0 z-50 h-[100vh] bg-[#CEEDC7] lg:w-[30%] md:w-[40%] w-[80%] py-6 lg:px-8 px-4 ${cartOpen && 'open'}`} >
             <label htmlFor="my-modal-3" className="btn btn-sm btn-circle btn-error text-white fixed right-5 top-2" onClick={() => setCartOpen(false)}>✕</label>
             <div className='text-center mt-4 mb-8'>
                 <h2 className='font-bold text-xl'>Your Shopping Cart</h2>

@@ -1,12 +1,14 @@
 import React, { createContext, useEffect, useState } from 'react'
 import { getStoredCart } from '../assets/utilities/dbLocal'
+import { getStoredWl } from '../assets/utilities/wishList'
 export const AuthContext = createContext()
 const AuthProvider = ({ children }) => {
+    const [cartOpen, setCartOpen] = useState(false)
+    const [products, setProducts] = useState(null)
     const [cart, setCart] = useState([])
     const cartLength = cart?.length
+    const [wishList, setWishList] = useState([])
 
-    // LOAD ALL THE PRODUCTS
-    const [products, setProducts] = useState(null)
     useEffect(() => {
         fetch('https://fashionista-server.vercel.app/products')
             .then(res => res.json())
@@ -28,14 +30,24 @@ const AuthProvider = ({ children }) => {
         setCart(savedCart)
     }, [products])
 
+    // GET WISHLIST FROM DB
+    useEffect(() => {
+        let wishList = [];
+        const storedList = getStoredWl();
+        for (const id in storedList) {
+            const addedList = products?.find(product => product.id === id)
+            if (addedList) {
+                wishList.push(addedList)
+            }
+        }
+        setWishList(wishList)
+    }, [products])
+
     // CART CALCULATION
-    let subtotal = 0;
-    cart.map(item => {
-        return subtotal = subtotal + (item.price * 10 * item.quantity)
-    })
-    const total = subtotal;
+    const subtotal = cart?.reduce((acc, item) => acc + (item.price * 10 * item.quantity), 0)
+
     const authInfo = {
-        cart, total, cartLength, products
+        cart, total: subtotal, cartLength, products, wishList, cartOpen, setCartOpen
     }
     return (
         <AuthContext.Provider value={authInfo}>

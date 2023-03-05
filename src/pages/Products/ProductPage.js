@@ -8,15 +8,17 @@ import Subscribe from '../Homepage/Subscribe/Subscribe'
 import { addToDb, getStoredCart, removeOneFromDb } from '../../assets/utilities/dbLocal'
 import { AuthContext } from '../../context/AuthProvider'
 import ProductCard from '../../components/Cards/ProductCard'
+import { addToWl, getStoredWl, removeFromWl } from '../../assets/utilities/wishList'
+import { toast } from 'react-hot-toast'
 
 const ProductPage = () => {
     const { id: productId, name, img, seller, price, category } = useLoaderData()
     useTitle(name)
     const navigate = useNavigate()
-    const { products, cart } = useContext(AuthContext)
-    const [clicked, setClicked] = useState(false)
+    const { products, cart, wishList } = useContext(AuthContext)
     const [selectedTab, setSelectedTab] = useState(1)
     const [added, setAdded] = useState(false)
+    const [storedWl, setStoredWl] = useState(false)
 
     const [size, setSize] = useState(1)
     const sizes = [
@@ -31,6 +33,14 @@ const ProductPage = () => {
             setAdded(false);
         }
     }, [cart, productId]);
+    useEffect(() => {
+        const storedWl = getStoredWl();
+        if (storedWl[productId]) {
+            setStoredWl(true);
+        } else {
+            setStoredWl(false);
+        }
+    }, [wishList, productId]);
 
     const quantity = cart?.find(c => c.id === productId)?.quantity
 
@@ -47,6 +57,18 @@ const ProductPage = () => {
 
     const handleGoCart = () => {
         navigate('/cart')
+    }
+
+    const handleAddToWl = () => {
+        if(!storedWl){
+            addToWl(productId)
+            setStoredWl(true)
+            toast.success("Items added to the Wishlist")
+        }else{
+            removeFromWl(productId)
+            setStoredWl(false)
+            toast.error("Items removed from the Wishlist")
+        }
     }
 
     if (!name) {
@@ -100,12 +122,12 @@ const ProductPage = () => {
                             <div className='flex items-center gap-4 mt-10'>
                                 <AddToCartButton handleAddToCart={handleAddToCart} />
                                 <span
-                                    data-tip={!clicked ? "add to wishlist" : "remove from wishlist"}
-                                    onClick={() => setClicked(!clicked)}
+                                    data-tip={!storedWl ? "add to wishlist" : "remove from wishlist"}
+                                    onClick={handleAddToWl}
                                     className='bg-white p-[10px] rounded-md flex justify-center items-center cursor-pointer tooltip tooltip-success'>
                                     <lord-icon
                                         target="span"
-                                        src={!clicked ? "https://cdn.lordicon.com/pnhskdva.json" : "https://cdn.lordicon.com/xryjrepg.json"}
+                                        src={!storedWl ? "https://cdn.lordicon.com/pnhskdva.json" : "https://cdn.lordicon.com/xryjrepg.json"}
                                         trigger="hover"
                                         colors="primary:#ee6d66"
                                         style={{ width: "30px", height: "30px" }}>

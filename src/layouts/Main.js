@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import { Outlet } from 'react-router-dom'
 import Navbar from '../components/Navbar/Navbar'
 import cartImg from '../assets/images/cart.png'
@@ -9,14 +9,13 @@ import ScrollToTop from '../components/Buttons/ScrollToTop'
 import { AuthContext } from '../context/AuthProvider'
 
 const Main = () => {
-    const [cartOpen, setCartOpen] = useState(false)
-    const {cartLength} = useContext(AuthContext)
+    const { cartLength, cartOpen, setCartOpen } = useContext(AuthContext)
     return (
         <section className='mx-auto max-w-[1264px] px-4'>
             {/* Cart Menu */}
             {
                 !cartOpen &&
-                <div className='fixed right-4 top-[20%] cursor-pointer flex flex-col items-center' onClick={() => setCartOpen(!cartOpen)} style={{ zIndex: "10" }}>
+                <div className='fixed right-4 top-[20%] cursor-pointer lg:flex md:flex hidden' onClick={() => setCartOpen(!cartOpen)} style={{ zIndex: "10" }}>
                     <div className='animation'>
                         <img className='h-16' src={cartImg} alt="cart" />
                         <p className='relative z-10 bg-[#D61355] ml-9 -mt-6 text-white flex justify-center items-center rounded-full h-7 w-7'>{cartLength}</p>
