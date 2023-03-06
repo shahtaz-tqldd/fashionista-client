@@ -69,6 +69,7 @@ const SuccessPage = () => {
                     <hr className='my-5' />
                     <h2 className='font-bold'>Subtotal : BDT {total}</h2>
                     <p className='text-xs'>Payment : Cash on Delivery</p>
+                    <p className='text-xs'>Purchased on : {new Date().toLocaleDateString('en-GB')}</p>
                 </div>
 
             </div>

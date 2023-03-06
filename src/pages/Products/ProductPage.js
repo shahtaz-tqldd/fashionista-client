@@ -213,7 +213,7 @@ const ProductPage = () => {
                 <h2 className='text-2xl font-bold textGradient mb-8'>Similar Products</h2>
                 <div className='grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-5'>
                     {
-                        products?.slice(0, 4)?.map((item, index) => <ProductCard key={index} data={item} />)
+                        products?.filter(p=>p.category === category ).slice(0,4).map((item, index) => <ProductCard key={index} data={item} />)
                     }
                 </div>
             </section>
