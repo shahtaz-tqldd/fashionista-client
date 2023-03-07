@@ -17,9 +17,9 @@ const Subscribe = () => {
                     <h1 className='lg:text-5xl text-3xl font-bold text-white'>Get <span className='text-[#FFDB89]'>20%</span> Off<br /> Discount Coupon</h1>
                     <h2 className='lg:text-[24px] text-[18px] text-white mt-4'>by Subscribe our Newsletter</h2>
                     <div className='mt-10 lg:mx-0 md:mx-0 mx-2 flex'>
-                        <input type="text" placeholder="Email Address" className="input input-bordered w-[270px] -mr-3 focus:outline-none" />
+                        <input type="text" placeholder="Email Address" className="input input-bordered lg:w-[270px] md:w-[270px] w-[200px] -mr-3 focus:outline-none" />
                         <button className='btn btn-primary text-white normal-case rounded-r-md rounded-l-none flex items-center gap-1' >
-                            <span>Get Coupon</span>
+                            <span className="lg:block md:block hidden">Get Coupon</span>
                             <lord-icon
                                 target="button"
                                 src="https://cdn.lordicon.com/zmkotitn.json"

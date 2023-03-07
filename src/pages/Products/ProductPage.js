@@ -24,6 +24,7 @@ const ProductPage = () => {
     const sizes = [
         "M", "L", "XL", "2XL"
     ]
+    const [color, setColor] = useState(1)
 
     useEffect(() => {
         const storedCart = getStoredCart();
@@ -60,11 +61,11 @@ const ProductPage = () => {
     }
 
     const handleAddToWl = () => {
-        if(!storedWl){
+        if (!storedWl) {
             addToWl(productId)
             setStoredWl(true)
             toast.success("Items added to the Wishlist")
-        }else{
+        } else {
             removeFromWl(productId)
             setStoredWl(false)
             toast.error("Items removed from the Wishlist")
@@ -79,8 +80,8 @@ const ProductPage = () => {
             <section className='flex lg:flex-row flex-col gap-12'>
 
                 {/* Product Image */}
-                <div className='lg:w-1/2 flex justify-center rounded-xl' style={{ backgroundColor:"#eceff1", maxHeight:"600px"}}>
-                    <img src={img} alt="" className='w-auto object-cover rounded-xl' style={{maxHeight:"600px",}}/>
+                <div className='lg:w-1/2 flex justify-center rounded-xl' style={{ backgroundColor: "#eceff1", maxHeight: "600px" }}>
+                    <img src={img} alt="" className='w-auto object-cover rounded-xl' style={{ maxHeight: "600px", }} />
                 </div>
 
                 {/* Product Details */}
@@ -109,8 +110,8 @@ const ProductPage = () => {
                         <div>
                             <h2 className='text-md mb-2 textGradient font-bold'>Choose Color</h2>
                             <div className="flex gap-3">
-                                <span className='h-8 w-8 bg-primary rounded-full border-[3px] border-[#F7C04A]'></span>
-                                <span className='h-8 w-8 bg-[#222] rounded-full border-[3px]'></span>
+                                <span onClick={()=>setColor(1)} className={`h-8 w-8 bg-primary rounded-full border-[3px] cursor-pointer ${color ===1 && 'border-[#F7C04A]'}`}></span>
+                                <span onClick={()=>setColor(2)} className={`h-8 w-8 bg-[#222] rounded-full border-[3px] cursor-pointer ${color ===2 && 'border-[#F7C04A]'}`}></span>
                             </div>
                         </div>
 
@@ -213,7 +214,7 @@ const ProductPage = () => {
                 <h2 className='text-2xl font-bold textGradient mb-8'>Similar Products</h2>
                 <div className='grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-5'>
                     {
-                        products?.filter(p=>p.category === category ).slice(0,4).map((item, index) => <ProductCard key={index} data={item} />)
+                        products?.filter(p => p.category === category).slice(0, 4).map((item, index) => <ProductCard key={index} data={item} />)
                     }
                 </div>
             </section>

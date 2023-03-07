@@ -19,7 +19,7 @@ const ProductCard = ({ data, setModalOpen }) => {
             className='rounded-lg cart-card hover:bg-white hover:shadow-lg hover:text-[#222] cursor-pointer'
             data-aos="fade-up"
         >
-            <div className='lg:h-64 h-40 w-full overflow-hidden rounded-t-lg'>
+            <div className='lg:h-64 h-40 w-full overflow-hidden rounded-t-lg bg-[#eceff1]'>
                 <img src={img} alt="" className='h-full w-full object-cover rounded-t-lg productImg' />
             </div>
             <div className='lg:h-32 md:h-32 h-[120px] flex flex-col justify-between lg:p-4 md:p-4 p-2'>

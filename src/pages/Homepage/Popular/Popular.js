@@ -9,7 +9,7 @@ const Popular = () => {
         fetch('https://fashionista-server.vercel.app/products/popular')
             .then(res => res.json())
             .then(data => setPopularProducts(data))
-    }, [popularProducts])
+    }, [])
     return (
         <section>
             <div className='mb-8'>

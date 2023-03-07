@@ -13,6 +13,7 @@ import {
     updateProfile
 } from 'firebase/auth'
 import { app } from '../firebase/firebase.config'
+import axios from 'axios'
 
 export const AuthContext = createContext()
 const auth = getAuth(app)
@@ -24,10 +25,10 @@ const AuthProvider = ({ children }) => {
     const cartLength = cart?.length
     const [wishList, setWishList] = useState([])
     useEffect(() => {
-        fetch('https://fashionista-server.vercel.app/products')
-            .then(res => res.json())
-            .then(data => setProducts(data))
-    }, [products])
+        axios.get('https://fashionista-server.vercel.app/products')
+            .then(res => setProducts(res.data))
+            .catch(err => console.error(err));
+    }, []);
 
     // GET CART PRODUCTS FROM LOCALSTORAGE
     useEffect(() => {
@@ -42,7 +43,7 @@ const AuthProvider = ({ children }) => {
             }
         }
         setCart(savedCart)
-    }, [products])
+    }, [cart, products])
 
     // GET WISHLIST FROM DB
     useEffect(() => {
@@ -55,7 +56,7 @@ const AuthProvider = ({ children }) => {
             }
         }
         setWishList(wishList)
-    }, [products])
+    }, [products, cart])
 
     // CART CALCULATION
     const subtotal = cart?.reduce((acc, item) => acc + (item.price * 10 * item.quantity), 0)

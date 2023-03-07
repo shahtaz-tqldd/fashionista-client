@@ -9,7 +9,7 @@ const HotDeals = () => {
         fetch('https://fashionista-server.vercel.app/products/hotdeals')
             .then(res => res.json())
             .then(data => setHotDeals(data))
-    }, [hotDeals])
+    }, [])
     return (
         <section>
             <div className='mb-8'>

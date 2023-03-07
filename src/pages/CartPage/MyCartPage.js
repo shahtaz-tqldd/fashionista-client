@@ -95,7 +95,7 @@ const MyCartPage = () => {
                     : <NoItemsFound where={'Cart'}/>
             }
 
-            {cart.length > 0 && <div className='mt-16 w-[360px] ml-auto p-10 bg-white rounded-2xl shadow-lg' data-aos="fade-left">
+            {cart.length > 0 && <div className='mt-16 w-[320px] ml-auto p-10 bg-white rounded-2xl shadow-lg' data-aos="fade-up">
                 <div className='flex justify-between items-end'>
                     <span className='text-xl'>Subtotal</span>
                     <h1 className='text-3xl font-bold'>BDT {total}</h1>

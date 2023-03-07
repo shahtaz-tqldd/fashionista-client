@@ -4,7 +4,7 @@ import { BsStar, BsStarFill, BsStarHalf } from 'react-icons/bs'
 const TestimonialCard = ({ data }) => {
     const { review, reviewer, reviewerPhoto } = data
     return (
-        <div className='bg-[#E1EEDD] rounded-lg p-6 mx-[14px] h-[320px]' data-aos="fade-left">
+        <div className='bg-[#E1EEDD] rounded-lg p-6 mx-[14px] h-[320px]'>
             <div className='flex flex-col items-center'>
                 <img src={reviewerPhoto} alt="" className='h-16 w-16 rounded-full object-cover' />
                 <h1 className='mt-1 font-bold text-lg'>{reviewer}</h1>

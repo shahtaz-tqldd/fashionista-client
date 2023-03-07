@@ -70,7 +70,7 @@ const Checkout = () => {
         <div className='lg:w-[60%]'>
           <h2 className='text-xl font-bold mb-6'>Billing Information</h2>
 
-          <form onSubmit={handleSubmit} data-aos="fade-right">
+          <form onSubmit={handleSubmit} data-aos="fade-up">
             <label className='ml-1'>Full Name</label>
             <input type="text" placeholder="Full Name" value={displayName} className="input input-bordered input-info w-full mb-3 mt-1" />
 
@@ -97,7 +97,7 @@ const Checkout = () => {
         <div className='lg:w-[40%]'>
           <div className='sticky top-20'>
             <h2 className='text-xl font-bold mb-6'>Order Details</h2>
-            <div className='w-full p-6 bg-white rounded-lg shadow-lg border-t-[6px] border-primary' data-aos="fade-left">
+            <div className='w-full p-6 bg-white rounded-lg shadow-lg border-t-[6px] border-primary' data-aos="fade-up">
               <div className='flex justify-between'>
                 <h2>Product</h2>
                 <h2>Subtotal</h2>

@@ -60,7 +60,7 @@ const Navbar = () => {
         </>
     );
     return (
-        <section className="fixed left-0 right-0 top-0 z-10 bg-white">
+        <section className="fixed left-0 right-0 top-0 z-10 bg-[#fff]">
             <div className="navbar mx-auto max-w-[1200px]">
                 <div className="navbar-start">
                     <div className="dropdown">
@@ -113,8 +113,8 @@ const Navbar = () => {
                         <Link to='/login' className='ml-2 lg:block md:block hidden'><MediumButton btnSpecially={'bg-colorRed text-white'}>Sign In</MediumButton></Link>
                     </> :
                         <>
-                            <span className='mr-2 font-bold textGradient' style={{ zIndex: "10" }}>{name}</span>
-                            <div className="dropdown">
+                            <span className='mr-2 font-bold textGradient'>{name}</span>
+                            <div className={`dropdown ${modalOpen && 'hidden'}`}>
                                 <label tabIndex={0}>
                                     <label tabIndex={0}>
                                         <IoIosArrowDropdownCircle className='text-xl cursor-pointer text-colorRed' />
@@ -140,7 +140,7 @@ const Navbar = () => {
                                                 class="set-color"
                                                 style={{ height: "20px", width: "20px" }}>
                                             </lord-icon>
-                                            <span className='lg:block md:block hidden'>WishList</span>
+                                            <span>WishList</span>
                                         </Link>
                                     </li>
                                     {
@@ -154,7 +154,7 @@ const Navbar = () => {
                                                     class="set-color"
                                                     style={{ height: "20px", width: "20px" }}>
                                                 </lord-icon>
-                                                <span className='lg:block md:block hidden'>My Orders</span>
+                                                <span>My Orders</span>
                                             </Link>
                                         </li>
                                     }
